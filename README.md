@@ -3,11 +3,11 @@
 
 ### Overview 
 
-This document describes the People Data Labs REST API v4. Additional resources can be found at [github.com/talentiq/api-documentation](https://github.com/talentiq/api-documentation). 
+This document describes the People Data Labs v4 REST API. Lists of canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/talentiq/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/talentiq/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/talentiq/docs/tree/master/schemas). 
 
-* [JSON Schemas](https://github.com/talentiq/api-documentation/tree/master/schemas)
-* [Example Responses](https://github.com/talentiq/api-documentation/tree/master/examples)
-* [Canonical Datasets](https://github.com/talentiq/api-documentation/tree/master/data) 
+* [JSON Schemas](https://github.com/talentiq/docs/tree/master/schemas)
+* [Example Responses](https://github.com/talentiq/docs/tree/master/examples)
+* [Canonical Datasets](https://github.com/talentiq/docs/tree/master/data) 
 
 If you have any problems or requests, please contact your account manager, or email us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a> 
 
@@ -27,24 +27,24 @@ If you have any problems or requests, please contact your account manager, or em
 
 ### Introduction  
 
-The People Data Labs API is designed to enrich information on a single person. 
+The API is designed to enrich information on a single person. 
 
 The API is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) and uses HTTP response codes to indicate API errors. All API responses, including errors, are returned in [JSON](http://www.json.org). 
 
 
 ### Endpoint  
 
-The API resides at `api.peopledatalabs.com `. All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS). Calls made over plain HTTP will fail. API requests without authentication will also fail.
+The API resides at `api.talentiq.co `. All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS). Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
 ```curl 
-https://api.peopledatalabs.com
+https://api.talentiq.co
 ```
 
 The `v4` API version has a single resource, `person`, at `/v4/person` 
 
 ```curl 
 curl -X GET \
-  'https://api.peopledatalabs.com/v4/person'
+  'https://api.talentiq.co/v4/person'
 ```
 
 All requests should be made via `GET`. 
@@ -56,9 +56,9 @@ API versions are specified in the url. Older versions of the API will continue t
  
 When we make backwards-incompatible changes to the API or dataset, we'll create a new version. The most up to date version of the API is `v4`. The next version of the API will be `v5`. We perform batch data builds on a monthly basis. We don't perform any streaming updates to the dataset between data builds. Each version of the API will use the most recent, up-to-date data build.  
 
-As can be seen in the [Example Person Data Model](https://github.com/talentiq/api-documentation/blob/master/examples/person.json), all data fields are stored as a list of objects. Data builds are ran approximately every 2 months. After a data build is ran, barring any significant update that breaks existing functionality in the API, the newly built data will be returned in existing versions of the API. Therefore, the dataset is not completely static; the number of fields/data points a specific profile has may increase/decrease through time.    
+As can be seen in the [Example Person Data Model](https://github.com/talentiq/docs/blob/master/examples/person.json), all data fields are stored as a list of objects. Data builds are ran approximately every 2 months. After a data build is ran, barring any significant update that breaks existing functionality in the API, the newly built data will be returned in existing versions of the API. Therefore, the dataset is not completely static; the number of fields/data points a specific profile has may increase/decrease through time.    
 
-In a single API version, the number of canonical values for `phone_numbers.type`, `locations.type`, `emails.type`, `profiles.network`, `industries.name`, and `locations` may increase, but the original values will not change. For example, in `v4`, a github profile in the `profiles` field's `network` field will always have the value `github`, yet if type of social network which is not currently in the dataset, e.g. `yelp.com` is added, `yelp` would be added as a potential canonical value. The most up-to-date list of canonical values for these fields can always be found in [github.com/talentiq/api-documentation/tree/master/data](https://github.com/talentiq/api-documentation/tree/master/data)    
+In a single API version, the number of canonical values for `phone_numbers.type`, `locations.type`, `emails.type`, `profiles.network`, `industries.name`, and `locations` may increase, but the original values will not change. For example, in `v4`, a github profile in the `profiles` field's `network` field will always have the value `github`, yet if type of social network which is not currently in the dataset, e.g. `yelp.com` is added, `yelp` would be added as a potential canonical value. The most up-to-date list of canonical values for these fields can always be found in [github.com/talentiq/docs/tree/master/data](https://github.com/talentiq/docs/tree/master/data)    
 
 On the other hand, the canonical `education.school` data, and the canonical `experience.company` data may change slightly within the span of a single API version. 
 
@@ -72,14 +72,14 @@ There are two ways to authenticate requests to `v4`.
 
 ```curl  
 curl -X GET \
-  'https://api.peopledatalabs.com/v4/person?api_key=xxxx'
+  'https://api.talentiq.co/v4/person?api_key=xxxx'
 ``` 
 
 **In Header** 
 
 ```curl  
 curl -X GET \
-  'https://api.peopledatalabs.com/v4/person' \ 
+  'https://api.talentiq.co/v4/person' \ 
   -H 'X-Api-Key: xxxx'
 ``` 
 
@@ -93,7 +93,7 @@ Rate limits are defined on a per-minute basis. We use a fixed-window rate limiti
 
 ```curl 
 curl -i -X GET \
-  'https://api.peopledatalabs.com/v4/person' \
+  'https://api.talentiq.co/v4/person' \
   -H 'X-Api-Key: xxxx'
   
 HTTP/2 404 
@@ -116,7 +116,7 @@ retry-after: 59
 | `x-totallimit-remaining` | The number of API requests which return a `200` you have remaining |
 | `x-ratelimit-limit` | The maximum number of requests you're permitted to make per minute. | 
 | `x-ratelimit-remaining` | The number of requests remaining in the current rate limit window. |
-| `x-ratelimit-reset` | 	The time at which the current rate limit window resets in UTC epoch seconds. |
+| `x-ratelimit-reset` |     The time at which the current rate limit window resets in UTC epoch seconds. |
 | `retry-after` | The number of seconds left until the current rate limit window resets. |
 
 If your account has a limit on the number of `200` API calls you're able to make, once `x-totallimit-remaining` reaches 0, all succeeding api requests will return `403` errors, and once `x-ratelimit-remaining` reaches 0, all succeeding requests made will return `429` errors, until the current rate limit window resets. If you'd like to increase your account's `x-totallimit-limit` or `x-ratelimit-limit`, please contact your account manager or reach out to us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a>
@@ -165,16 +165,16 @@ The following parameters can be used to specify information on the requested per
 | `phone` | A phone number the person has used | `+1 541-672 2910` |
 | `email` | An email the person has used | `renee.c.paulsen1959@yahoo.com` |  
 | `email_hash` | A sha256 email hash | `e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4 ` |  
-| `profile` | A social profile the person has used. [List of available social profiles](https://github.com/talentiq/api-documentation/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
+| `profile` | A social profile the person has used. [List of available social profiles](https://github.com/talentiq/docs/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
 
 The minumum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
 
 ```curl 
 profile OR email OR phone OR ( 
-	(
-		(first_name AND last_name) OR name) AND 
-		(locality OR region OR company OR school OR location)
-	)
+    (
+        (first_name AND last_name) OR name) AND 
+        (locality OR region OR company OR school OR location)
+    )
 ```
 
 
@@ -183,7 +183,7 @@ profile OR email OR phone OR (
 
 ```curl 
 curl -X GET -G \
-  'https://api.peopledatalabs.com/v4/person' \
+  'https://api.talentiq.co/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
   -d 'email=johnlsmith1983@gmail.com' \
   -d 'email=john.smith@stanford.edu' \ 
@@ -193,7 +193,7 @@ curl -X GET -G \
 
 ```curl 
 curl -X GET -G \
-  'https://api.peopledatalabs.com/v4/person' \
+  'https://api.talentiq.co/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
   -d 'company=Google' \
   -d 'first_name=John' \ 
@@ -204,7 +204,7 @@ curl -X GET -G \
 
 ```curl 
 curl -X GET -G \
-  'https://api.peopledatalabs.com/v4/person' \
+  'https://api.talentiq.co/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
   -d 'name=Jeff L. Paulse' \ 
   -d 'location=SF Bay Area' \
@@ -581,7 +581,7 @@ Requests made with only a few data points, e.g. a name and location, will rarely
  
 ### Errors 
 
-People Data Labs uses conventional HTTP response codes to indicate the success or failure of an API request. A `200` means there was a matching person returned, a `404` means that a matching person was not found or returned, any `4xx` besides `404` indicates an issue with the request, and `5xx` errors indicate an internal issue with the API. 
+The API uses conventional HTTP response codes to indicate the success or failure of an API request. A `200` means there was a matching person returned, a `404` means that a matching person was not found or returned, any `4xx` besides `404` indicates an issue with the request, and `5xx` errors indicate an internal issue with the API. 
 
 
 **4xx Response Fields**  
@@ -627,18 +627,6 @@ People Data Labs uses conventional HTTP response codes to indicate the success o
 | `405` | `invalid_request_error ` | Request method is not allowed on the requested resource |  
 | `429` | `rate_limit_error ` | An error occurred due to requests hitting the API too quick |  
 | `5xx` | `api_error ` | The server encountered an unexpected condition which prevented it from fulfilling the request |  
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
