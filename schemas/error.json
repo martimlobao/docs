@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "properties": {
+    "error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "type": {
+          "examples": [
+            "invalid_request_error",
+            "authentication_error",
+            "quota_exceeded",
+            "not_found",
+            "invalid_request_error",
+            "rate_limit_error"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "status": {
+      "examples": [
+        400,
+        401,
+        403,
+        404,
+        405,
+        429
+      ],
+      "type": "integer"
+    }
+  }
+}

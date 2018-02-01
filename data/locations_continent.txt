@@ -1,0 +1,6 @@
+africa
+asia
+europe
+north america
+south america
+

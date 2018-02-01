@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "status": {
+      "type": "integer",
+      "description": "HTTP Status Code",
+      "default": 200
+    },
+    "likelihood": {
+      "type": "integer",
+      "description": "An indicator of how likely the person returned is the same as the person requested",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "data": {
+      "$ref": "person.json"
+    }
+  }
+}
