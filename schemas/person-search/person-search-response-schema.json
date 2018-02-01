@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "message": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    },
+    "hits": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number"
+        },
+        "max_score": {
+          "type": "number"
+        },
+        "hits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_score": {
+                "type": "number"
+              },
+              "_source": {
+                "type": "schemas/person/person.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

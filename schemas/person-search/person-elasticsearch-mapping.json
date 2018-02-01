@@ -1,0 +1,458 @@
+{
+  "mappings": {
+    "person": {
+      "properties": {
+        "education": {
+          "properties": {
+            "is_current": {
+              "type": "boolean"
+            },
+            "degree": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "end_date": {
+              "format": "yyyy||yyyy-MM||yyyy-MM-dd",
+              "type": "date"
+            },
+            "locations": {
+              "properties": {
+                "continent": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "country": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "geo": {
+                  "type": "geo_point"
+                },
+                "type": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "is_primary": {
+                  "type": "boolean"
+                },
+                "locality": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "name": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "po_box": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "postal_code": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "region": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "street_address": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              }
+            },
+            "majors": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "degrees": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "minors": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "school": {
+              "properties": {
+                "location": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "name": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "website": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "profiles": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              }
+            },
+            "start_date": {
+              "format": "yyyy||yyyy-MM||yyyy-MM-dd",
+              "type": "date"
+            }
+          },
+          "type": "nested"
+        },
+        "emails": {
+          "properties": {
+            "address": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "is_primary": {
+              "type": "boolean"
+            },
+            "type": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "domain": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "local": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "type": "nested"
+        },
+        "experience": {
+          "properties": {
+            "is_current": {
+              "type": "boolean"
+            },
+            "company": {
+              "properties": {
+                "industry": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "location": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "name": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "size": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "website": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "profiles": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              }
+            },
+            "end_date": {
+              "format": "yyyy||yyyy-MM||yyyy-MM-dd",
+              "type": "date"
+            },
+            "locations": {
+              "properties": {
+                "continent": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "country": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "geo": {
+                  "type": "geo_point"
+                },
+                "type": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "is_primary": {
+                  "type": "boolean"
+                },
+                "locality": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "name": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "po_box": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "postal_code": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "region": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "street_address": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              }
+            },
+            "start_date": {
+              "format": "yyyy||yyyy-MM||yyyy-MM-dd",
+              "type": "date"
+            },
+            "title": {
+              "properties": {
+                "functions": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "levels": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
+                "name": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "type": "nested"
+        },
+        "industries": {
+          "properties": {
+            "is_primary": {
+              "type": "boolean"
+            },
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        },
+        "interests": {
+          "properties": {
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        },
+        "locations": {
+          "properties": {
+            "continent": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "country": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "geo": {
+              "type": "geo_point"
+            },
+            "type": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "is_primary": {
+              "type": "boolean"
+            },
+            "locality": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "po_box": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "postal_code": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "region": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "street_address": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "type": "nested"
+        },
+        "names": {
+          "properties": {
+            "clean": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "first_name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "last_initial": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "middle_initial": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "is_primary": {
+              "type": "boolean"
+            },
+            "last_name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "middle_name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "pedigree": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "suffix": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "title": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "type": "nested"
+        },
+        "phone_numbers": {
+          "type": "nested",
+          "properties": {
+            "E164": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "area_code": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "country_code": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "extension": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "is_primary": {
+              "type": "boolean"
+            },
+            "national_number": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "number": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "type": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        },
+        "photos": {
+          "type": "nested",
+          "properties": {
+            "source": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "url": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        },
+        "profiles": {
+          "properties": {
+            "aliases": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "ids": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "is_active": {
+              "type": "boolean"
+            },
+            "network": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "url": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "clean": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "username": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "type": "nested"
+        },
+        "skills": {
+          "properties": {
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        },
+        "websites": {
+          "properties": {
+            "is_primary": {
+              "type": "boolean"
+            },
+            "type": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "url": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "domain": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

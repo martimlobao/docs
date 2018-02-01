@@ -1,0 +1,276 @@
+{
+  "education": [
+    {
+      "degree": "bachelor of science",
+      "end_date": "2014",
+      "is_current": null,
+      "locations": [
+        {
+          "continent": "north america",
+          "country": "united states",
+          "geo": "44.06,-123.19",
+          "is_primary": null,
+          "locality": "eugene",
+          "name": "eugene, oregon, united states",
+          "po_box": null,
+          "postal_code": null,
+          "region": "oregon",
+          "street_address": null,
+          "type": "locality"
+        }
+      ],
+      "majors": [
+        "business administration"
+      ],
+      "minors": [
+        "entrepreneurship"
+      ],
+      "school": {
+        "location": "eugene, oregon, united states",
+        "name": "university of oregon",
+        "profiles": [
+          "linkedin.com/edu/university-of-oregon-19207"
+        ],
+        "website": "http://www.uoregon.edu"
+      },
+      "start_date": "2010"
+    }
+  ],
+  "emails": [
+    {
+      "address": "sean@talentiq.co",
+      "domain": "talentiq.co",
+      "is_primary": null,
+      "local": "sean",
+      "type": "professional"
+    },
+    {
+      "address": "sean@hallspot.com",
+      "domain": "hallspot.com",
+      "is_primary": null,
+      "local": "sean",
+      "type": "professional"
+    },
+    {
+      "address": "seanthorne5@gmail.com",
+      "domain": "gmail.com",
+      "is_primary": null,
+      "local": "seanthorne5",
+      "type": "personal"
+    }
+  ],
+  "experience": [
+    {
+      "company": {
+        "industry": "computer software",
+        "location": "san francisco, california, united states",
+        "name": "talentiq technologies",
+        "profiles": [
+          "linkedin.com/company/talentiq"
+        ],
+        "size": "11-50",
+        "website": "http://www.talentiq.co"
+      },
+      "end_date": null,
+      "is_current": null,
+      "locations": [
+        {
+          "continent": "north america",
+          "country": "united states",
+          "geo": "37.79,-122.39",
+          "is_primary": null,
+          "locality": "san francisco",
+          "name": "san francisco, california, united states",
+          "po_box": null,
+          "postal_code": null,
+          "region": "california",
+          "street_address": null,
+          "type": "locality"
+        }
+      ],
+      "start_date": "2015",
+      "title": {
+        "functions": [],
+        "levels": [
+          "co-founder",
+          "ceo",
+          "c",
+          "executive",
+          "chief executive officer"
+        ],
+        "name": "co-founder & ceo"
+      }
+    },
+    {
+      "company": {
+        "industry": "computer software",
+        "location": null,
+        "name": "hallspot",
+        "profiles": [
+          "linkedin.com/company/hallspot",
+          "linkedin.com/company/3019184"
+        ],
+        "size": null,
+        "website": "http://www.hallspot.com"
+      },
+      "end_date": "2015",
+      "is_current": null,
+      "locations": [],
+      "start_date": "2012",
+      "title": {
+        "functions": [],
+        "levels": [
+          "founder",
+          "co-founder"
+        ],
+        "name": "co-founder"
+      }
+    },
+    {
+      "company": {
+        "industry": "internet",
+        "location": null,
+        "name": "datemyschool",
+        "profiles": [
+          "linkedin.com/company/datemyschool",
+          "linkedin.com/company/1977175"
+        ],
+        "size": null,
+        "website": "http://www.datemyschool.com"
+      },
+      "end_date": "2012",
+      "is_current": null,
+      "locations": [],
+      "start_date": "2012",
+      "title": {
+        "functions": [
+          "manager",
+          "marketing manager"
+        ],
+        "levels": [],
+        "name": "marketing manager"
+      }
+    }
+  ],
+  "industries": [
+    {
+      "is_primary": null,
+      "name": "computer software"
+    },
+    {
+      "is_primary": null,
+      "name": "sales & marketing"
+    }
+  ],
+  "interests": [
+    {
+      "name": "golf"
+    },
+    {
+      "name": "coffee"
+    },
+    {
+      "name": "history"
+    }
+  ],
+  "locations": [
+    {
+      "continent": "north america",
+      "country": "united states",
+      "geo": "37.79,-122.39",
+      "is_primary": null,
+      "locality": "san francisco",
+      "name": "san francisco, california, united states",
+      "po_box": null,
+      "postal_code": null,
+      "region": "california",
+      "street_address": null,
+      "type": "locality"
+    },
+    {
+      "continent": "north america",
+      "country": "united states",
+      "geo": "44.06,-123.19",
+      "is_primary": null,
+      "locality": "eugene",
+      "name": "eugene, oregon, united states",
+      "po_box": null,
+      "postal_code": null,
+      "region": "oregon",
+      "street_address": null,
+      "type": "locality"
+    },
+    {
+      "continent": "north america",
+      "country": "united states",
+      "geo": "45.54,-122.79",
+      "is_primary": null,
+      "locality": "portland",
+      "name": "portland, oregon, united states",
+      "po_box": null,
+      "postal_code": null,
+      "region": "oregon",
+      "street_address": null,
+      "type": "locality"
+    }
+  ],
+  "names": [
+    {
+      "clean": "sean thorne",
+      "first_name": "sean",
+      "is_primary": true,
+      "last_name": "thorne",
+      "middle_name": null,
+      "name": "sean f thorne",
+      "pedigree": null,
+      "suffix": null,
+      "title": "mr."
+    }
+  ],
+  "phone_numbers": [
+    {
+      "E164": "+14903928712",
+      "area_code": "490",
+      "country_code": "1",
+      "extension": "null",
+      "national_number": "4903928712",
+      "number": "+1 (490) 392-8712",
+      "type": "personal"
+    }
+  ],
+  "photos": [
+    {
+      "source": null,
+      "url": "https://d1qb2nb5cznatu.cloudfront.net/users/276254-large?1458341112"
+    }
+  ],
+  "profiles": [
+    {
+      "aliases": [],
+      "clean": "linkedin.com/in/seanthorne",
+      "ids": [],
+      "network": "linkedin",
+      "url": "http://www.linkedin.com/in/seanthorne",
+      "username": "in/seanthorne"
+    }
+  ],
+  "skills": [
+    {
+      "name": "entrepreneurship"
+    },
+    {
+      "name": "sales"
+    },
+    {
+      "name": "marketing"
+    }
+  ],
+  "websites": [
+    {
+      "domain": "seanthorne.com",
+      "is_primary": null,
+      "type": "personal",
+      "url": "http://www.seanthorne.com"
+    }
+  ]
+}

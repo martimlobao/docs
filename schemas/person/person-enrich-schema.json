@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "likelihood": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "If there is a match (200 Success), likelihood is a score (0-10) that predicts how likely the person in the request and the person in the response are the same person. If the request does not return a 200, likelihood is null."
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "error message"
+          }
+        }
+      }
+    },
+    "message": {
+      "type": "string",
+      "description": "Status message, ex. Success"
+    },
+    "status": {
+      "type": "number",
+      "description": "Status code, ex. 200"
+    },
+    "data": {
+      "type": [
+        "/person.json",
+        "null"
+      ],
+      "description": "If response is 200, a person object is returned (referenced in schema/person.json file). If response code is not 200, data is null"
+    }
+  }
+}
