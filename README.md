@@ -3,11 +3,7 @@
 
 ### Overview 
 
-This document describes the People Data Labs v4 REST API. Lists of canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/talentiq/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/talentiq/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/talentiq/docs/tree/master/schemas). 
-
-* [JSON Schemas](https://github.com/talentiq/docs/tree/master/schemas)
-* [Example Responses](https://github.com/talentiq/docs/tree/master/examples)
-* [Canonical Datasets](https://github.com/talentiq/docs/tree/master/data) 
+This document describes the People Data Labs v4 REST API. Canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/talentiq/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/talentiq/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/talentiq/docs/tree/master/schemas). 
 
 If you have any problems or requests, please contact your account manager, or email us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a> 
 
