@@ -1,0 +1,51 @@
+bachelors
+masters
+bachelor of arts
+bachelor of science
+master of arts
+master of business administration
+associates
+master of science
+doctorates
+associate of arts
+bachelor of business administration
+doctor of philosophy
+bachelor of engineering
+bachelor of commerce
+doctor of jurisprudence
+bachelor of applied science
+bachelor of fine arts
+bachelor of law
+master of education
+doctor of medicine
+master of laws
+bachelor of education
+bachelor of science in nursing
+bachelor of architecture
+master of social work
+doctor of osteophathy
+master of public health
+doctor of pharmacy
+doctor of education
+master of divinity
+bachelor of medicine
+master of commerce
+bachelor of music
+bachelor of pharmacy
+master of international studies
+doctor of chiropractic
+doctor of physical therapy
+bachelor of design
+doctor of veterinary medicine
+doctor of dental surgery
+doctor of psychology
+doctor of optometry
+master of library science
+bachelor of mathematics
+doctor of nursing practice
+doctor of medical dentistry
+doctor of ministry
+doctor of science
+bachelor of veterinary science
+doctor of public health
+bachelor of liberal arts and sciences
