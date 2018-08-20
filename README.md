@@ -3,7 +3,7 @@
 
 ### Overview 
 
-This document describes the People Data Labs v4 REST API. Canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/talentiq/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/talentiq/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/talentiq/docs/tree/master/schemas). 
+This document describes the People Data Labs v4 REST API. Canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/peopledatalabs/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/peopledatalabs/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/peopledatalabs/docs/tree/master/schemas). 
 
 If you have any problems or requests, please contact your account manager, or email us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a> 
 
@@ -30,17 +30,17 @@ The API is organized around [REST](https://en.wikipedia.org/wiki/Representationa
 
 ### Endpoint  
 
-The API resides at `api.talentiq.co `. All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS). Calls made over plain HTTP will fail. API requests without authentication will also fail.
+The API resides at `api.peopledatalabs.com`. All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS). Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
 ```curl 
-https://api.talentiq.co
+https://api.peopledatalabs.com
 ```
 
 The `v4` API version has a single resource, `person`, at `/v4/person` 
 
 ```curl 
 curl -X GET \
-  'https://api.talentiq.co/v4/person'
+  'https://api.peopledatalabs.com/v4/person'
 ```
 
 All requests should be made via `GET`. 
@@ -52,9 +52,9 @@ API versions are specified in the url. Older versions of the API will continue t
  
 When we make backwards-incompatible changes to the API or dataset, we'll create a new version. The most up to date version of the API is `v4`. The next version of the API will be `v5`. We perform batch data builds on a monthly basis. We don't perform any streaming updates to the dataset between data builds. Each version of the API will use the most recent, up-to-date data build.  
 
-As can be seen in the [Example Person Data Model](https://github.com/talentiq/docs/blob/master/examples/person.json), all data fields are stored as a list of objects. Data builds are ran approximately every 2 months. After a data build is ran, barring any significant update that breaks existing functionality in the API, the newly built data will be returned in existing versions of the API. Therefore, the dataset is not completely static; the number of fields/data points a specific profile has may increase/decrease through time.    
+As can be seen in the [Example Person Data Model](https://github.com/peopledatalabs/docs/blob/master/examples/person.json), all data fields are stored as a list of objects. Data builds are ran approximately every 2 months. After a data build is ran, barring any significant update that breaks existing functionality in the API, the newly built data will be returned in existing versions of the API. Therefore, the dataset is not completely static; the number of fields/data points a specific profile has may increase/decrease through time.    
 
-In a single API version, the number of canonical values for `phone_numbers.type`, `locations.type`, `emails.type`, `profiles.network`, `industries.name`, and `locations` may increase, but the original values will not change. For example, in `v4`, a github profile in the `profiles` field's `network` field will always have the value `github`, yet if a social network which is not currently in the dataset, e.g. `yelp.com` is added, `yelp` would be added as a potential to the [list of canonical social network types](https://github.com/talentiq/docs/blob/master/data/profiles_network.txt). The most up-to-date list of canonical values for these fields can always be found in [github.com/talentiq/docs/tree/master/data](https://github.com/talentiq/docs/tree/master/data)    
+In a single API version, the number of canonical values for `phone_numbers.type`, `locations.type`, `emails.type`, `profiles.network`, `industries.name`, and `locations` may increase, but the original values will not change. For example, in `v4`, a github profile in the `profiles` field's `network` field will always have the value `github`, yet if a social network which is not currently in the dataset, e.g. `yelp.com` is added, `yelp` would be added as a potential to the [list of canonical social network types](https://github.com/peopledatalabs/docs/blob/master/data/profiles_network.txt). The most up-to-date list of canonical values for these fields can always be found in [github.com/peopledatalabs/docs/tree/master/data](https://github.com/peopledatalabs/docs/tree/master/data)    
 
 On the other hand, the canonical `education.school` data, and the canonical `experience.company` data may change slightly within the span of a single API version. 
 
@@ -68,14 +68,14 @@ There are two ways to authenticate requests to `v4`.
 
 ```curl  
 curl -X GET \
-  'https://api.talentiq.co/v4/person?api_key=xxxx'
+  'https://api.peopledatalabs.com/v4/person?api_key=xxxx'
 ``` 
 
 **In Header** 
 
 ```curl  
 curl -X GET \
-  'https://api.talentiq.co/v4/person' \ 
+  'https://api.peopledatalabs.com/v4/person' \ 
   -H 'X-Api-Key: xxxx'
 ``` 
 
@@ -89,7 +89,7 @@ Rate limits are defined on a per-minute basis. We use a fixed-window rate limiti
 
 ```curl 
 curl -i -X GET \
-  'https://api.talentiq.co/v4/person' \
+  'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx'
   
 HTTP/2 404 
@@ -161,7 +161,7 @@ The following parameters can be used to specify information on the requested per
 | `phone` | A phone number the person has used | `+1 541-672 2910` |
 | `email` | An email the person has used | `renee.c.paulsen1959@yahoo.com` |  
 | `email_hash` | A sha256 email hash | `e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4 ` |  
-| `profile` | A social profile the person has used. [List of available social profiles](https://github.com/talentiq/docs/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
+| `profile` | A social profile the person has used. [List of available social profiles](https://github.com/peopledatalabs/docs/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
 
 The minumum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
 
@@ -179,32 +179,32 @@ profile OR email OR phone OR (
 
 ```curl 
 curl -X GET -G \
-  'https://api.talentiq.co/v4/person' \
+  'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  -d 'email=johnlsmith1983@gmail.com' \
-  -d 'email=john.smith@stanford.edu' \ 
-  -d 'name=John Smith'
+  --data-urlencode 'email=johnlsmith1983@gmail.com' \
+  --data-urlencode 'email=john.smith@stanford.edu' \ 
+  --data-urlencode 'name=John Smith'
 
 ``` 
 
 ```curl 
 curl -X GET -G \
-  'https://api.talentiq.co/v4/person' \
+  'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  -d 'company=Google' \
-  -d 'first_name=John' \ 
-  -d 'last_name=Smith' \
-  -d 'school=Arizona State University' 
+  --data-urlencode 'company=Google' \
+  --data-urlencode 'first_name=John' \ 
+  --data-urlencode 'last_name=Smith' \
+  --data-urlencode 'school=Arizona State University' 
 
 ```
 
 ```curl 
 curl -X GET -G \
-  'https://api.talentiq.co/v4/person' \
+  'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  -d 'name=Jeff L. Paulse' \ 
-  -d 'location=SF Bay Area' \
-  -d 'phone=1 503-2353497' 
+  --data-urlencode 'name=Jeff L. Paulse' \ 
+  --data-urlencode 'location=SF Bay Area' \
+  --data-urlencode 'phone=1 503-2353497' 
 
 ```
 
