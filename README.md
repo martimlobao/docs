@@ -530,12 +530,34 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "E164": "+19252783011",
         "national_number": "9252783011",
         "number": "+19252783011"
+      },
+      {
+        "area_code": "415",
+        "country_code": "1",
+        "E164": "+14155688415",
+        "national_number": "4155688415",
+        "number": "+14155688415"
       }
     ],
     "gender": "male",
     "birth_date_fuzzy": "1990",
-    "birth_date": null,
+    "birth_date": "1990-12-03",
     "locations": [
+      {
+        "name": "eugene, oregon, united states",
+        "locality": "eugene",
+        "region": "oregon",
+        "subregion": "lane county",
+        "country": "united states",
+        "continent": "north america",
+        "type": "locality",
+        "geo": "44.05,-123.08",
+        "postal_code": "97401",
+        "street_address": "1400 mill st",
+        "address_line_2": null,
+        "most_recent": false,
+        "is_primary": false
+      },
       {
         "name": "san francisco, california, united states",
         "locality": "san francisco",
@@ -545,23 +567,8 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "continent": "north america",
         "type": "locality",
         "geo": "37.77,-122.41",
-        "postal_code": null,
-        "street_address": null,
-        "address_line_2": null,
-        "most_recent": false,
-        "is_primary": false
-      },
-      {
-        "name": "albany, california, united states",
-        "locality": "albany",
-        "region": "california",
-        "subregion": "alameda county",
-        "country": "united states",
-        "continent": "north america",
-        "type": "locality",
-        "geo": "37.88,-122.29",
-        "postal_code": "94706",
-        "street_address": "730 pomona ave",
+        "postal_code": "94105",
+        "street_address": "399 fremont st",
         "address_line_2": null,
         "most_recent": true,
         "is_primary": true
