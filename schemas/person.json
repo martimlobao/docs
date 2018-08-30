@@ -2,10 +2,32 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "additionalProperties": true,
   "properties": {
+    "birth_date": {
+      "type": ["string", "null"],
+      "format": "full-date"
+    },
+    "birth_date_fuzzy": {
+      "type": ["string", "null"],
+      "format": "date-fullyear"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female",
+        null
+      ]
+    },
     "education": {
       "items": {
         "additionalProperties": true,
         "properties": {
+          "is_primary": {
+            "type": "boolean"
+          },
+          "most_recent": {
+            "type": "boolean"
+          },
           "degrees": {
             "items": {
               "examples": [
@@ -21,7 +43,7 @@
               "2011"
             ],
             "format": "full-date",
-            "type": "string"
+            "type": ["string", "null"]
           },
           "majors": {
             "items": {
@@ -81,7 +103,7 @@
               "2009"
             ],
             "format": "full-date",
-            "type": "string"
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -119,7 +141,7 @@
               "personal",
               null
             ],
-            "type": "string"
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -135,6 +157,12 @@
       "items": {
         "additionalProperties": true,
         "properties": {
+          "is_primary": {
+            "type": "boolean"
+          },
+          "most_recent": {
+            "type": "boolean"
+          },
           "company": {
             "additionalProperties": true,
             "properties": {
@@ -169,14 +197,104 @@
               "2011"
             ],
             "format": "full-date",
-            "type": "string"
+            "type": ["string", "null"]
           },
           "start_date": {
             "examples": [
               "2014"
             ],
             "format": "full-date",
-            "type": "string"
+            "type": ["string", "null"]
+          },
+          "locations": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "continent": {
+                  "enum": [
+                    "north america",
+                    "south america",
+                    "africa",
+                    "europe",
+                    "asia",
+                    "australia",
+                    "antartica"
+                  ],
+                  "type": "string"
+                },
+                "country": {
+                  "examples": [
+                    "united states",
+                    "france"
+                  ],
+                  "type": "string"
+                },
+                "geo": {
+                  "examples": [
+                    "37.8044444,-122.2697222"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "locality": {
+                  "examples": [
+                    "oakland",
+                    "new york"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "name": {
+                  "examples": [
+                    "san francisco, california, united states",
+                    "oregon, united states"
+                  ],
+                  "type": "string"
+                },
+                "region": {
+                  "examples": [
+                    "california",
+                    "british columbia"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "postal_code": {
+                  "examples": [
+                    "97215",
+                    "97406"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "street_address": {
+                  "examples": [
+                    "382 nw kearney blvd",
+                    "462 miller way"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "address_line_2": {
+                  "examples": [
+                    "suite 800",
+                    "#500"
+                  ],
+                  "type": ["string", "null"]
+                },
+                "type": {
+                  "enum": [
+                    "locality",
+                    "region",
+                    "country"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "name",
+                "country",
+                "continent"
+              ],
+              "type": "object"
+            },
+            "type": "array"
           },
           "title": {
             "type": [
@@ -190,7 +308,21 @@
                   "functions": {
                     "items": {
                       "examples": [
-                        "programer"
+                        "software engineer"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "levels": {
+                    "items": {
+                      "enum": [
+                        "c",
+                        "owner",
+                        "dir",
+                        "mgr",
+                        "vp",
+                        "pres"
                       ],
                       "type": "string"
                     },
@@ -414,6 +546,12 @@
             ],
             "type": "string"
           },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "most_recent": {
+            "type": "boolean"
+          },
           "country": {
             "examples": [
               "united states",
@@ -425,14 +563,14 @@
             "examples": [
               "37.8044444,-122.2697222"
             ],
-            "type": "string"
+            "type": ["string", "null"]
           },
           "locality": {
             "examples": [
               "oakland",
               "new york"
             ],
-            "type": "string"
+            "type": ["string", "null"]
           },
           "name": {
             "examples": [
@@ -446,7 +584,28 @@
               "california",
               "british columbia"
             ],
-            "type": "string"
+            "type": ["string", "null"]
+          },
+          "postal_code": {
+            "examples": [
+              "97215",
+              "97406"
+            ],
+            "type": ["string", "null"]
+          },
+          "street_address": {
+            "examples": [
+              "382 nw kearney blvd",
+              "462 miller way"
+            ],
+            "type": ["string", "null"]
+          },
+          "address_line_2": {
+            "examples": [
+              "suite 800",
+              "#500"
+            ],
+            "type": ["string", "null"]
           },
           "type": {
             "enum": [
@@ -454,7 +613,7 @@
               "region",
               "country"
             ],
-            "type": "string"
+            "type": ["string", "null"]
           }
         },
         "required": [
@@ -493,7 +652,10 @@
             "examples": [
               "franklin"
             ],
-            "type": "string"
+            "type": ["string", "null"]
+          },
+          "is_primary": {
+            "type": "boolean"
           },
           "name": {
             "examples": [
@@ -591,18 +753,34 @@
           },
           "network": {
             "enum": [
-              "angellist",
+              "linkedin",
+              "twitter",
               "facebook",
               "github",
+              "xing",
+              "indeed",
               "gravatar",
-              "instagram",
-              "linkedin",
+              "klout",
               "meetup",
-              "myspace",
+              "foursquare",
+              "angellist",
+              "quora",
               "pinterest",
-              "twitter",
+              "aboutme",
+              "flickr",
+              "vimeo",
+              "google",
+              "youtube",
               "wordpress",
-              "youtube"
+              "instagram",
+              "crunchbase",
+              "dribbble",
+              "myspace",
+              "behance",
+              "medium",
+              "soundcloud",
+              "reddit",
+              "gitlab"
             ],
             "type": "string"
           },
