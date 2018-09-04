@@ -15,6 +15,13 @@
     },
     "data": {
       "$ref": "person.json"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "additionalProperties": true
+      },
+      "description": "metadata object if defined in the api request post body of a /v4/person/bulk api call."
     }
   }
 }
