@@ -938,7 +938,7 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
 
 Response filtering/formatting params defined locally in an individual request object will override those defined in the request body root.  
 
-Any respone object in a `/v4/person/bulk` response will either have a status code of `200`, `404`, or `400`. Any valid `/v4/bulk/person` will return with a status code of `200`.  
+Any response object in a `/v4/person/bulk` response will either have a status code of `200`, `404`, or `400`. Any valid `/v4/bulk/person` will return with a status code of `200`.  
 
 The number of remaining enrichment matches your account is alloted will be deducted by the number of `200` responses in a bulk enrichment request.  
 
