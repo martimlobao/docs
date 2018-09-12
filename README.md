@@ -18,7 +18,8 @@ If you have any problems or requests, please contact your account manager, or em
 1. [Required Parameter](#required-parameter) 
 1. [Likelihood](#likelihood) 
 1. [Response](#response) 
-1. [Errors](#errors) 
+1. [Errors](#errors)
+1. [Bulk Endpoint](#bulk-endpoint) 
 
 
 ### Introduction  
@@ -36,15 +37,29 @@ The API resides at `api.peopledatalabs.com`. All API requests must be made over 
 https://api.peopledatalabs.com
 ```
 
-The `v4` API version has a single resource, `person`, at `/v4/person` 
+The `v4` API can be used to enrich data on a person:
 
 ```curl 
 curl -X GET \
-  'https://api.peopledatalabs.com/v4/person'
+  'https://api.peopledatalabs.com/v4/person?profile=linkedin.com/in/seanthorne'
 ```
 
-All requests should be made via `GET`. 
+Or data on 1-100 persons in a single request (recommended):
 
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+    "requests": [
+    	{
+    		"params": {
+    			"profile": ["linkedin.com/in/seanthorne"]
+    		}
+    	}
+    ]
+}'
+``` 
+
+For high volume usage, we recommend the 2nd option. 
 
 ### Versioning 
 
@@ -181,9 +196,9 @@ profile OR email OR phone OR (
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  --data-urlencode 'email=johnlsmith1983@gmail.com' \
-  --data-urlencode 'email=john.smith@stanford.edu' \ 
-  --data-urlencode 'name=John Smith'
+  --data-urlencode 'email=sean@talentiq.co' \
+  --data-urlencode 'email=sean@peopledatalabs.com' \ 
+  --data-urlencode 'name=Sean Thorne'
 
 ``` 
 
@@ -191,10 +206,10 @@ curl -X GET -G \
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  --data-urlencode 'company=Google' \
-  --data-urlencode 'first_name=John' \ 
-  --data-urlencode 'last_name=Smith' \
-  --data-urlencode 'school=Arizona State University' 
+  --data-urlencode 'company=TalentIQ Technologies' \
+  --data-urlencode 'first_name=Sean' \ 
+  --data-urlencode 'last_name=Thorne' \
+  --data-urlencode 'school=University of Oregon' 
 
 ```
 
@@ -202,8 +217,9 @@ curl -X GET -G \
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx' \ 
-  --data-urlencode 'name=Jeff L. Paulse' \ 
+  --data-urlencode 'name=Sean Thorne' \ 
   --data-urlencode 'location=SF Bay Area' \
+  --data-urlencode 'profile=www.twitter.com/seanthorne5' \
   --data-urlencode 'phone=1 503-2353497' 
 
 ```
@@ -253,6 +269,27 @@ Response must contain experience and emails
 ```curl 
 required=experience AND emails  
 ``` 
+
+Fields which can be filtered/required are limited to:  
+
+* `education`
+* `education.school`
+* `education.school.name`
+* `emails`
+* `experience`
+* `experience.company`
+* `experience.company.name`
+* `locations`
+* `locations.name`
+* `locations.street_address`
+* `names`
+* `names.clean`
+* `phone_numbers`
+* `phone_numbers.e164`
+* `profiles`
+* `profiles.clean`
+* `profiles.ids`
+* `profiles.network`
 
 ### Likelihood 
 
@@ -773,6 +810,163 @@ The API uses conventional HTTP response codes to indicate the success or failure
 | `405` | `invalid_request_error ` | Request method is not allowed on the requested resource |  
 | `429` | `rate_limit_error ` | An error occurred due to requests hitting the API too quick |  
 | `5xx` | `api_error ` | The server encountered an unexpected condition which prevented it from fulfilling the request |  
+
+
+
+### Bulk Endpoint 
+
+Up to 100 persons can be enriched in a single HTTP request using the `/v4/person/bulk` endpoint. Enrichments executed against the bulk endpoint must be a `POST`. The request body of a bulk enrichment request must contain an array, `requests`, with 1-100 individual request objects, each containing an object `params` of request parameters. A JSON schema describing the structure of a `/v4/person/bulk` enrichment request can be found at [https://github.com/peopledatalabs/docs/blob/master/schemas/bulk_request.json](https://github.com/peopledatalabs/docs/blob/master/schemas/bulk_request.json)
+
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+    "requests": [
+    	{
+    		"params": {
+    			"profile": ["linkedin.com/in/seanthorne"],
+    			"location": ["SF Bay Area"],
+    			"name": ["Sean F. Thorne"]
+    		}
+    	},
+    	{
+    		"params": {
+    			"profile": ["https://www.linkedin.com/in/haydenconrad/"],
+    			"first_name": "Hayden",
+    			"last_name": "Conrad"
+    		}
+    	}
+    ]
+}'
+``` 
+
+Responses are returned as an array of [response](#response) objects.  
+
+```json
+[
+	{"status": 200, "likelihood": 10, "data": ...},
+	{"status": 200, "likelihood": 10, "data": ...}
+]
+```
+
+Response objects are not always returned in the same order as they were defined in the `requests` array. For this reason, we strongly recommend adding an object `metadata` to each request, containing any information specific to that request. If `metadata` is defined in a request object, it will be returned, unchanged in that request's corresponding response object: 
+
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+    "requests": [
+    	{
+    		"metadata": {
+    			"user_id": "123"
+    		},
+    		"params": {
+    			"profile": ["linkedin.com/in/seanthorne"],
+    			"location": ["SF Bay Area"],
+    			"name": ["Sean F. Thorne"]
+    		}
+    	},
+    	{
+    		"metadata": {
+    			"user_id": "345"
+    		},
+    		"params": {
+    			"profile": ["https://www.linkedin.com/in/haydenconrad/"],
+    			"first_name": "Hayden",
+    			"last_name": "Conrad"
+    		}
+    	}
+    ]
+}'
+``` 
+
+```json
+[
+	{"metadata": {"user_id": "123"}, "status": 200, "likelihood": 10, "data": ...},
+	{"metadata": {"user_id": "345"}, "status": 200, "likelihood": 10, "data": ...}
+]
+```
+
+Any of the response filtering or formatting params documented in the [Parameters](#parameters) section can be defined globally for all request objects: 
+
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+	"required": "emails AND profiles",
+	"requests": [
+    	{
+    		"params": {
+    			"profile": ["linkedin.com/in/seanthorne"],
+    			"location": ["SF Bay Area"],
+    			"name": ["Sean F. Thorne"]
+    		}
+    	},
+    	{
+    		"params": {
+    			"profile": ["https://www.linkedin.com/in/haydenconrad/"],
+    			"first_name": "Hayden",
+    			"last_name": "Conrad"
+    		}
+    	}
+    ]
+}'
+``` 
+Or locally in a single request object: 
+
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+	"required": "emails AND profiles",
+	"requests": [
+    	{
+    		"required": "experience",
+    		"params": {
+    			"profile": ["linkedin.com/in/seanthorne"],
+    			"location": ["SF Bay Area"],
+    			"name": ["Sean F. Thorne"]
+    		}
+    	},
+    	{
+    		"min_likelihood": 8,
+    		"params": {
+    			"profile": ["https://www.linkedin.com/in/haydenconrad/"],
+    			"first_name": "Hayden",
+    			"last_name": "Conrad"
+    		}
+    	}
+    ]
+}'
+```  
+
+Response filtering/formatting params defined locally in an individual request object will override those defined in the request body root.  
+
+Any respone object in a `/v4/person/bulk` response will either have a status code of `200`, `404`, or `400`. Any valid `/v4/bulk/person` will return with a status code of `200`.  
+
+The number of remaining enrichment matches your account is alloted will be deducted by the number of `200` responses in a bulk enrichment request.  
+
+Any malformed, unauthenticated, or throttled request will return errors in the same format they're documented in the [errors](#errors) section.  
+
+
+
+
+```curl
+curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
+{
+	"required": "names"
+}'
+```  
+
+```json 
+{
+    "status": 400,
+    "error": {
+        "type": "invalid_request_error",
+        "message": "Request object must contain `requests` field"
+    }
+} 
+```
+
+
+
+
 
 
 
