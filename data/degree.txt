@@ -1,51 +1,162 @@
 bachelors
 masters
-bachelor of arts
 bachelor of science
-master of arts
+bachelor of arts
 master of business administration
 associates
 master of science
 doctorates
-associate of arts
 bachelor of business administration
 doctor of philosophy
+master of arts
 bachelor of engineering
+associate of arts
 bachelor of commerce
+bachelor of medicine
+bachelor of technology
 doctor of jurisprudence
 bachelor of applied science
-bachelor of fine arts
 bachelor of law
+bachelor of fine arts
 master of education
 doctor of medicine
-master of laws
 bachelor of education
-bachelor of science in nursing
+master of laws
 bachelor of architecture
 master of social work
-doctor of osteophathy
+bachelor of science in nursing
+master of technology
+bachelor of science in business administration
+master of fine arts
+master of engineering
 master of public health
-doctor of pharmacy
-doctor of education
-master of divinity
-bachelor of medicine
 master of commerce
-bachelor of music
+doctor of pharmacy
+master of public administration
+master of divinity
 bachelor of pharmacy
+doctor of education
+bachelor of music
+bachelor of science in electrical engineering
+master of science in nursing
 master of international studies
-doctor of chiropractic
-doctor of physical therapy
-bachelor of design
-doctor of veterinary medicine
+bachelor of science in mechanical engineering
 doctor of dental surgery
-doctor of psychology
-doctor of optometry
-master of library science
-bachelor of mathematics
-doctor of nursing practice
+bachelor of design
+bachelor of science in engineering
+master of music
+doctor of veterinary medicine
+master of arts in teaching
+bachelor of social work
+master of library & information studies
+doctor of chiropractic
+master of science in electrical engineering
+bachelor of science in civil engineering
+doctor of physical therapy
 doctor of medical dentistry
-doctor of ministry
-doctor of science
+doctor of psychology
+doctor of business administration
+master of library science
+doctor of optometry
+bachelor of mathematics
+bachelor of science in computer science
+master of science in education
+master of accountancy
+doctor of nursing practice
 bachelor of veterinary science
+bachelor of mechanical engineering
+bachelor of science in education
+bachelor of general studies
+doctor of musical arts
+master of science in civil engineering
+master of science in mechanical engineering
+doctor of science
+master of liberal arts
+bachelor of interdisciplinary studies
+master of arts in education
+master of political science
+bachelor of liberal arts
+doctor of audiology
+master of aerospace engineering
+bachelor of electrical engineering
+master of science in computer science
+master of science in information systems
+master of health science
+master of design
+doctor of ministry
+master of science in public health
+bachelor of aerospace engineering
 doctor of public health
+bachelor of science in engineering technology
+master of tax accounting
+bachelor of civil engineering
+master of civil engineering
+bachelor of biosystems engineering
+master of mechanical engineering
+bachelor of arts of business administration
+bachelor of science in metallurgical engineering
+master of science in industrial engineering
+bachelor of science in aerospace engineering
+master of urban and regional planning
+master of applied mathematics
 bachelor of liberal arts and sciences
+master of science in health administration
+master of science in forensic science
+master of building construction
+master of electrical engineering
+bachelor of science in social work
+magister juris
+magisters
+bachelor of arts in education
+bachelor of textile engineering
+bachelor of music education
+master of science in software engineering
+master of science in occupational therapy
+master of communication disorders
+master of real estate development
+bachelor of science in commerce business administration
+master of rehabilitation counseling
+master of science in aerospace engineering
+master of nurse anesthesia
+master of science in physician assistant studies
+master of natural resources
+master of science in criminal justice
+master of accounting
+master of taxation
+master of communication
+bachelor of industrial & systems engineering
+master of science in operations research
+master of science in health informatics
+bachelor of software engineering
+bachelor of science in biomedical engineering
+bachelor of science in chemistry
+master of science in biomedical engineering
+master of technical & professional communication
+master of landscape architecture
+master of software engineering
+bachelor of interior architecture
+bachelor of science in human environmental sciences
+bachelor of wireless engineering
+bachelor of arts in communication
+bachelor of professional health science
+master of professional studies
+master of science in metallurgical engineering
+bachelor of science in chemical engineering
+bachelor of science in materials engineering
+master of science in engineering science & mechanics
+master of integrated design and construction
+master of science in instructional leadership administration
+bachelor of textile management and technology
+master of science in chemistry
+bachelor of science in geology
+bachelor of industrial design
+master of science in basic medical sciences
+master of agriculture
+bachelor of chemical engineering
+master of aquaculture
+master of science in human environmental sciences
+master of science in justice and public safety
+master of science in materials engineering
+doctor of osteophathy
+master of chemical engineering
+master of materials engineering
