@@ -591,6 +591,7 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "type": "locality",
         "geo": "44.05,-123.08",
         "postal_code": "97401",
+        "zip_plus_4": null,
         "street_address": "1400 mill st",
         "address_line_2": null,
         "most_recent": false,
