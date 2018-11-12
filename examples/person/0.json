@@ -292,6 +292,7 @@
         "type": "locality",
         "geo": "37.77,-122.41",
         "postal_code": "94105",
+        "zip_plus_4": null,
         "street_address": "399 fremont st",
         "address_line_2": null,
         "most_recent": true,
