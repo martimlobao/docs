@@ -429,7 +429,8 @@ Requests made with only a few data points, e.g. a name and location, will rarely
     ],
     "industries": [
       {
-        "name": "computer software"
+        "name": "computer software",
+        "is_primary": true
       }
     ],
     "interests": [
@@ -608,7 +609,8 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "street_address": "399 fremont st",
         "address_line_2": null,
         "most_recent": true,
-        "is_primary": true
+        "is_primary": true,
+        "last_updated": 2018-10-07
       }
     ],
     "names": [
@@ -622,112 +624,163 @@ Requests made with only a few data points, e.g. a name and location, will rarely
       }
     ],
     "experience": [
-      {
+    {
         "company": {
-          "name": "talentiq technologies",
-          "industry": "computer software",
-          "profiles": [
-            "linkedin.com/company/6404208",
-            "linkedin.com/company/talentiq"
-          ],
-          "website": "talentiq.co"
+            "name": "talentiq",
+            "size": null,
+            "industry": null,
+            "location": null,
+            "profiles": [],
+            "website": null
         },
+        "locations": [],
+        "end_date": null,
         "start_date": "2015-03",
+        "title": {
+            "levels": [
+                "owner"
+            ],
+            "name": "co-founder",
+            "functions": [
+                "founder"
+            ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false
+    },
+    {
+        "company": {
+            "name": "hallspot",
+            "size": "1-10",
+            "industry": "computer software",
+            "location": {
+                "country": "united states",
+                "region": "oregon",
+                "locality": "portland"
+            },
+            "profiles": [
+                "linkedin.com/company/3019184",
+                "linkedin.com/company/hallspot",
+                "twitter.com/hallspot",
+                "crunchbase.com/organization/hallspot"
+            ],
+            "website": "hallspot.com"
+        },
+        "locations": [],
+        "end_date": "2015-02",
+        "start_date": "2012-08",
+        "title": {
+            "levels": [
+                "owner"
+            ],
+            "name": "co-founder",
+            "functions": [
+                "founder"
+            ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false
+    },
+    {
+        "company": {
+            "name": "datemyschool",
+            "size": "11-50",
+            "industry": "internet",
+            "location": {
+                "country": "united states",
+                "region": "new york",
+                "locality": "brooklyn"
+            },
+            "profiles": [
+                "linkedin.com/company/datemyschool",
+                "linkedin.com/company/1977175",
+                "facebook.com/datemyschool",
+                "twitter.com/datemyschool",
+                "crunchbase.com/organization/datemyschool"
+            ],
+            "website": "datemyschool.com"
+        },
+        "locations": [],
+        "end_date": "2012-08",
+        "start_date": "2012-01",
+        "title": {
+            "levels": [
+                "mgr"
+            ],
+            "name": "marketing manager",
+            "functions": [
+                "marketing manager"
+            ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false
+    },
+    {
+        "company": {
+            "name": "people data labs",
+            "size": "11-50",
+            "industry": "computer software",
+            "location": {
+                "country": "united states",
+                "locality": "san francisco",
+                "region": "california"
+            },
+            "profiles": [
+                "linkedin.com/company/18170482",
+                "linkedin.com/company/peopledatalabs",
+                "twitter.com/peopledatalabs",
+                "facebook.com/peopledatalabs",
+                "crunchbase.com/organization/talentiq"
+            ],
+            "website": "peopledatalabs.com"
+        },
+        "locations": [],
+        "end_date": null,
+        "start_date": "2015-03",
+        "title": {
+            "levels": [
+                "owner",
+                "c"
+            ],
+            "name": "co-founder & ceo",
+            "functions": [
+                "founder",
+                "chief executive officer"
+            ]
+        },
+        "type": null,
+        "is_primary": true,
+        "most_recent": true,
+        "last_updated": "2018-10-03"
+    },
+    {
+        "company": {
+            "name": "talentiq technologies",
+            "size": null,
+            "industry": null,
+            "location": null,
+            "profiles": [],
+            "website": null
+        },
+        "start_date": null,
         "end_date": null,
         "title": {
-          "levels": [
-            "owner"
-          ],
-          "name": "co-founder",
-          "functions": [
-            "founder"
-          ]
-        },
-        "locations": [
-          {
-            "continent": "north america",
-            "country": "united states",
-            "region": "california",
-            "locality": "san francisco",
-            "geo": "37.77,-122.41",
-            "type": "locality",
-            "postal_code": null,
-            "subregion": null,
-            "address_line_2": null,
-            "street_address": null,
-            "name": "san francisco, california, united states"
-          }
-        ],
-        "type": null,
-        "most_recent": false,
-        "is_primary": false
-      },
-      {
-        "company": {
-          "name": "hallspot",
-          "industry": "computer software",
-          "profiles": [
-            "linkedin.com/company/hallspot",
-            "linkedin.com/company/3019184"
-          ],
-          "website": "hallspot.com"
-        },
-        "start_date": "2012-08",
-        "end_date": "2015-02",
-        "title": {
-          "levels": [
-            "owner"
-          ],
-          "name": "co-founder",
-          "functions": [
-            "founder"
-          ]
-        },
-        "locations": [
-          {
-            "continent": "north america",
-            "country": "united states",
-            "region": "california",
-            "locality": "san francisco",
-            "geo": "37.77,-122.41",
-            "type": "locality",
-            "postal_code": null,
-            "subregion": null,
-            "address_line_2": null,
-            "street_address": null,
-            "name": "san francisco, california, united states"
-          }
-        ],
-        "type": null,
-        "most_recent": false,
-        "is_primary": false
-      },
-      {
-        "company": {
-          "name": "datemyschool",
-          "industry": "internet",
-          "profiles": [
-            "linkedin.com/company/datemyschool",
-            "linkedin.com/company/1977175"
-          ],
-          "website": "datemyschool.com"
-        },
-        "start_date": "2012-01",
-        "end_date": "2012-08",
-        "title": {
-          "levels": [
-            "mgr"
-          ],
-          "name": "marketing manager",
-          "functions": [
-            "marketing manager"
-          ]
+            "levels": [
+                "owner"
+            ],
+            "name": "co-founder",
+            "functions": [
+                "founder"
+            ]
         },
         "locations": [],
         "type": null,
-        "most_recent": false,
-        "is_primary": false
-      }
+        "is_primary": false,
+        "most_recent": false
+    }
     ],
     "education": [
       {
