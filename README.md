@@ -270,6 +270,18 @@ Response must contain experience and emails
 required=experience AND emails  
 ``` 
 
+Response must contain experience or emails
+
+```curl 
+required=experience OR emails  
+``` 
+
+Response must contain education and (emails or phone_numbers)
+
+```curl 
+required=education AND (emails OR phone_numbers)
+``` 
+
 Fields which can be filtered/required are limited to:  
 
 * `education`
