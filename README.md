@@ -178,7 +178,7 @@ The following parameters can be used to specify information on the requested per
 | `email_hash` | A sha256 email hash | `e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4 ` |  
 | `profile` | A social profile the person has used. [List of available social profiles](https://github.com/peopledatalabs/docs/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
 
-The minumum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
+The minimum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
 
 ```curl 
 profile OR email OR phone OR ( 
@@ -268,6 +268,18 @@ Response must contain experience and emails
 
 ```curl 
 required=experience AND emails  
+``` 
+
+Response must contain experience or emails
+
+```curl 
+required=experience OR emails  
+``` 
+
+Response must contain education and (emails or phone_numbers)
+
+```curl 
+required=education AND (emails OR phone_numbers)
 ``` 
 
 Fields which can be filtered/required are limited to:  
