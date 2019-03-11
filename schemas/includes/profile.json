@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "aliases": {
+      "items": {
+        "examples": [
+          "linkedin.com/pub/marisa-manriquez/52/789/804"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "clean": {
+      "examples": [
+        "linkedin.com/in/seanthorne",
+        "twitter.com/seanthorne5"
+      ],
+      "type": "string"
+    },
+    "ids": {
+      "items": {
+        "examples": [
+          "187055428",
+          "39201839"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "network": {
+      "enum": [
+        "linkedin",
+        "twitter",
+        "facebook",
+        "github",
+        "xing",
+        "indeed",
+        "gravatar",
+        "klout",
+        "meetup",
+        "foursquare",
+        "angellist",
+        "quora",
+        "pinterest",
+        "aboutme",
+        "flickr",
+        "vimeo",
+        "google",
+        "youtube",
+        "wordpress",
+        "instagram",
+        "crunchbase",
+        "dribbble",
+        "myspace",
+        "behance",
+        "medium",
+        "soundcloud",
+        "reddit",
+        "gitlab"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "examples": [
+        "http://www.twitter.com/seanthorne5",
+        "http://www.linkedin.com/in/seanthorne"
+      ],
+      "type": "string"
+    },
+    "username": {
+      "examples": [
+        "seanthorne",
+        "seanthorne5"
+      ],
+      "type": "string"
+    },
+    "is_primary": {
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

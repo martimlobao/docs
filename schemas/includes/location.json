@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "continent": {
+      "enum": [
+        "north america",
+        "south america",
+        "africa",
+        "europe",
+        "asia",
+        "australia",
+        "antartica"
+      ],
+      "type": "string"
+    },
+    "is_primary": {
+      "type": "boolean"
+    },
+    "most_recent": {
+      "type": "boolean"
+    },
+    "country": {
+      "examples": [
+        "united states",
+        "france"
+      ],
+      "type": "string"
+    },
+    "geo": {
+      "examples": [
+        "37.8044444,-122.2697222"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "locality": {
+      "examples": [
+        "oakland",
+        "new york"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "examples": [
+        "san francisco, california, united states",
+        "oregon, united states"
+      ],
+      "type": "string"
+    },
+    "region": {
+      "examples": [
+        "california",
+        "british columbia"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postal_code": {
+      "examples": [
+        "97215",
+        "97406"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "street_address": {
+      "examples": [
+        "382 nw kearney blvd",
+        "462 miller way"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "address_line_2": {
+      "examples": [
+        "suite 800",
+        "#500"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "enum": [
+        "locality",
+        "region",
+        "country"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "country",
+    "continent"
+  ],
+  "type": "object"
+}

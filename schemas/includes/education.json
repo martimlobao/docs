@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "is_primary": {
+      "type": "boolean"
+    },
+    "most_recent": {
+      "type": "boolean"
+    },
+    "degrees": {
+      "items": {
+        "examples": [
+          "masters",
+          "bachelors of science"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "end_date": {
+      "examples": [
+        "2011"
+      ],
+      "format": "full-date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "majors": {
+      "items": {
+        "examples": [
+          "computer science",
+          "accounting"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "minors": {
+      "items": {
+        "examples": [
+          "religious studies",
+          "philosophy"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "school": {
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "examples": [
+            "stanford university",
+            "university of oregon",
+            "clackamas community college",
+            "university of phoenix"
+          ],
+          "type": "string"
+        },
+        "profiles": {
+          "items": {
+            "examples": [
+              "facebook.com/universityoforegon",
+              "linkedin.com/edu/florida-state-university-18100",
+              "twitter.com/Harvard"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "website": {
+          "examples": [
+            "http://www.uoregon.edu",
+            "http://www.fsu.edu"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "start_date": {
+      "examples": [
+        "2009"
+      ],
+      "format": "full-date",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object"
+}

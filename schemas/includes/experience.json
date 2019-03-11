@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "is_primary": {
+      "type": "boolean"
+    },
+    "most_recent": {
+      "type": "boolean"
+    },
+    "last_updated": {
+      "examples": [
+        "2018-10-04"
+      ],
+      "format": "full-date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "company": {
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "examples": [
+            "people data labs"
+          ],
+          "type": "string"
+        },
+        "industry": {
+          "examples": [
+            "computer software"
+          ],
+          "type": "string"
+        },
+        "location": {
+          "additionalProperties": true,
+          "properties": {
+            "country": {
+              "examples": [
+                "united states"
+              ],
+              "type": "string"
+            },
+            "region": {
+              "examples": [
+                "california"
+              ],
+              "type": "string"
+            },
+            "locality": {
+              "examples": [
+                "san francisco"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "profiles": {
+          "items": {
+            "examples": [
+              "linkedin.com/company/peopledatalabs",
+              "twitter.com/peopledatalabs",
+              "angel.co/peopledatalabs"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "website": {
+          "examples": [
+            "http://www.peopledatalabs.com"
+          ],
+          "type": "string"
+        },
+        "founded": {
+          "examples": [
+            "2010"
+          ],
+          "format": "full-date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "size": {
+          "enum": [
+            "10001+",
+            "1001-5000",
+            "51-200",
+            "11-50",
+            "1-10",
+            "201-500",
+            "501-1000",
+            "5001-10000"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "end_date": {
+      "examples": [
+        "2011"
+      ],
+      "format": "full-date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start_date": {
+      "examples": [
+        "2014"
+      ],
+      "format": "full-date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "locations": {
+      "items": {
+        "$ref": "includes/location.json"
+      },
+      "type": "array"
+    },
+    "title": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "oneOf": [
+        {
+          "additionalProperties": true,
+          "properties": {
+            "functions": {
+              "items": {
+                "examples": [
+                  "software engineer"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "levels": {
+              "items": {
+                "enum": [
+                  "c",
+                  "owner",
+                  "dir",
+                  "mgr",
+                  "vp",
+                  "pres"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "name": {
+              "examples": [
+                "program coordinator"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "type": "object"
+}
