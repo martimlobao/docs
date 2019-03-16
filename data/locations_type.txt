@@ -1,4 +1,0 @@
-locality
-country
-region
-subregion

@@ -174,8 +174,7 @@ The following parameters can be used to specify information on the requested per
 | `company` | A name, website, or social url of a company where the person has worked | `Amazon Web Services` |
 | `school` | A name, website, or social url of a university or college the person has attended | `university of iowa` |
 | `phone` | A phone number the person has used | `+1 541-672 2910` |
-| `email` | An email the person has used | `renee.c.paulsen1959@yahoo.com` |  
-| `email_hash` | A sha256 email hash | `e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4 ` |  
+| `email` | An email the person has used | `renee.c.paulsen1959@yahoo.com` |  `e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4 ` |  
 | `profile` | A social profile the person has used. [List of available social profiles](https://github.com/peopledatalabs/docs/blob/master/data/profiles_network.txt) | `https://linkedin.com/in/seanthorne` |  
 
 The minimum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
@@ -327,8 +326,415 @@ Requests made with only a few data points, e.g. a name and location, will rarely
 ```json 
 {
   "status": 200,
+  "metadata": {
+    "name": "",
+    "request_id": "a1ab1b49-b640-4699-a135-06a23f2ea103"
+  },
   "data": {
-    "id": "d293d894-5aa1-46e6-bf96-c1a8d741781c",
+    "id": "phewewgXRKygpg8wSUrt",
+    "birth_date_fuzzy": "1990",
+    "birth_date": null,
+    "gender": "male",
+    "primary": {
+      "job": {
+        "company": {
+          "name": "people data labs",
+          "founded": "2015",
+          "industry": "information technology and services",
+          "location": {
+            "locality": "san francisco",
+            "region": "california",
+            "country": "united states"
+          },
+          "profiles": [
+            "linkedin.com/company/peopledatalabs",
+            "linkedin.com/company/1640694639"
+          ],
+          "website": "peopledatalabs.com",
+          "size": "11-50"
+        },
+        "locations": [],
+        "end_date": null,
+        "start_date": "2015-03",
+        "title": {
+          "levels": [
+            "owner",
+            "c"
+          ],
+          "name": "co-founder & ceo",
+          "functions": [
+            "founder",
+            "chief executive officer"
+          ]
+        },
+        "last_updated": "2019-02-01"
+      },
+      "location": {
+        "name": "san francisco, california, united states",
+        "locality": "san francisco",
+        "region": "california",
+        "country": "united states",
+        "last_updated": "2019-02-01",
+        "continent": "north america"
+      },
+      "name": {
+        "first_name": "sean",
+        "middle_name": null,
+        "last_name": "thorne",
+        "clean": "sean thorne"
+      },
+      "industry": "computer software",
+      "personal_emails": [
+        "seanfongthorne@gmail.com"
+      ],
+      "linkedin": "linkedin.com/in/seanthorne",
+      "work_emails": [
+        "sean.thorne@talentiq.co",
+        "sean@talentiq.co",
+        "sean@peopledatalabs.com"
+      ],
+      "other_emails": [
+        "sthorne@uoregon.edu",
+        "sean@hallspot.com",
+        "sean@datemyschool.com"
+      ]
+    },
+    "profiles": [
+      {
+        "network": "linkedin",
+        "ids": [
+          "145991517"
+        ],
+        "clean": "linkedin.com/in/seanthorne",
+        "aliases": [],
+        "username": "seanthorne",
+        "is_primary": true,
+        "url": "http://www.linkedin.com/in/seanthorne"
+      },
+      {
+        "network": "klout",
+        "ids": [],
+        "clean": "klout.com/seanthorne5",
+        "aliases": [],
+        "username": "seanthorne5",
+        "url": "http://www.klout.com/seanthorne5"
+      },
+      {
+        "network": "twitter",
+        "ids": [],
+        "clean": "twitter.com/seanthorne5",
+        "aliases": [],
+        "username": "seanthorne5",
+        "url": "http://www.twitter.com/seanthorne5"
+      },
+      {
+        "network": "aboutme",
+        "ids": [],
+        "clean": "about.me/sean_thorne",
+        "aliases": [],
+        "username": "sean_thorne",
+        "url": "http://www.about.me/sean_thorne"
+      },
+      {
+        "network": "medium",
+        "ids": [],
+        "clean": "medium.com/@seanthorne5",
+        "aliases": [],
+        "username": "@seanthorne5",
+        "url": "http://www.medium.com/@seanthorne5"
+      },
+      {
+        "network": "angellist",
+        "ids": [],
+        "clean": "angel.co/sean-thorne-1",
+        "aliases": [],
+        "username": "sean-thorne-1",
+        "url": "http://www.angel.co/sean-thorne-1"
+      },
+      {
+        "network": "gravatar",
+        "ids": [],
+        "clean": "gravatar.com/seanthorne5",
+        "aliases": [],
+        "username": "seanthorne5",
+        "url": "http://www.gravatar.com/seanthorne5"
+      },
+      {
+        "network": "linkedin",
+        "ids": [],
+        "clean": "linkedin.com/in/sean-thorne-9b9a854",
+        "aliases": [
+          "linkedin.com/pub/sean-thorne/40/a85/9b9"
+        ],
+        "username": "sean-thorne-9b9a854",
+        "is_primary": false,
+        "url": "http://www.linkedin.com/in/sean-thorne-9b9a854"
+      },
+      {
+        "network": "angellist",
+        "ids": [],
+        "clean": "angel.co/475041",
+        "aliases": [],
+        "username": "475041",
+        "url": "http://www.angel.co/475041"
+      }
+    ],
+    "emails": [
+      {
+        "address": "sthorne@uoregon.edu",
+        "type": null,
+        "sha256": "e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4",
+        "domain": "uoregon.edu",
+        "local": "sthorne"
+      },
+      {
+        "address": "sean.thorne@talentiq.co",
+        "type": "current_professional",
+        "sha256": "92e0b06495f24c1cb453b6d2a4d3374c3052fa9a87faf14ad8841ca7e92a586f",
+        "domain": "talentiq.co",
+        "local": "sean.thorne"
+      },
+      {
+        "address": "sean@talentiq.co",
+        "type": "current_professional",
+        "sha256": "312680c9c9dacac4307197777433e39f255ce7175c6085073aedc95c1e750bd6",
+        "domain": "talentiq.co",
+        "local": "sean"
+      },
+      {
+        "address": "sean@hallspot.com",
+        "type": "professional",
+        "sha256": "f61d233a1e3bf232f63c322a6d52ed692f69ec3a9585140302cd32a50027d704",
+        "domain": "hallspot.com",
+        "local": "sean"
+      },
+      {
+        "address": "sean@datemyschool.com",
+        "type": "professional",
+        "sha256": "ced7fdad56974dfbb8d9ccde17b5437e776ee3ca19c283b2ff940965dfb4f570",
+        "domain": "datemyschool.com",
+        "local": "sean"
+      },
+      {
+        "address": "sean@peopledatalabs.com",
+        "type": "current_professional",
+        "sha256": "138ea1a7076bb01889af2309de02e8b826c27f022b21ea8cf11aca9285d5a04e",
+        "domain": "peopledatalabs.com",
+        "local": "sean"
+      },
+      {
+        "address": "seanfongthorne@gmail.com",
+        "type": "personal",
+        "sha256": "fe2892a9597b2c46939f4798263eac1cfdeff7debead9c637dd5a9b2a8da355e",
+        "domain": "gmail.com",
+        "local": "seanfongthorne"
+      }
+    ],
+    "phone_numbers": [
+      {
+        "E164": "+14155688415",
+        "number": "+14155688415",
+        "type": null,
+        "country_code": "1",
+        "national_number": "4155688415",
+        "area_code": "415"
+      }
+    ],
+    "names": [
+      {
+        "first_name": "sean",
+        "last_name": "thorne",
+        "suffix": null,
+        "middle_name": null,
+        "middle_initial": null,
+        "name": "sean thorne",
+        "clean": "sean thorne",
+        "is_primary": true
+      }
+    ],
+    "locations": [
+      {
+        "name": "san francisco, california, united states",
+        "locality": "san francisco",
+        "region": "california",
+        "subregion": "city and county of san francisco",
+        "country": "united states",
+        "continent": "north america",
+        "type": "locality",
+        "geo": "37.77,-122.41",
+        "postal_code": null,
+        "zip_plus_4": null,
+        "street_address": null,
+        "address_line_2": null,
+        "most_recent": true,
+        "is_primary": true,
+        "last_updated": "2019-02-01"
+      }
+    ],
+    "experience": [
+      {
+        "company": {
+          "name": "people data labs",
+          "size": "11-50",
+          "founded": "2015",
+          "industry": "information technology and services",
+          "location": {
+            "locality": "san francisco",
+            "region": "california",
+            "country": "united states"
+          },
+          "profiles": [
+            "linkedin.com/company/peopledatalabs",
+            "linkedin.com/company/1640694639"
+          ],
+          "website": "peopledatalabs.com"
+        },
+        "locations": [],
+        "end_date": null,
+        "start_date": "2015-03",
+        "title": {
+          "levels": [
+            "owner",
+            "c"
+          ],
+          "name": "co-founder & ceo",
+          "functions": [
+            "founder",
+            "chief executive officer"
+          ]
+        },
+        "type": null,
+        "is_primary": true,
+        "most_recent": true,
+        "last_updated": "2019-02-01"
+      },
+      {
+        "company": {
+          "name": "talentiq technologies",
+          "size": "1-10",
+          "founded": "2015",
+          "industry": "computer software",
+          "location": {
+            "locality": "san francisco",
+            "region": "california",
+            "country": "united states"
+          },
+          "profiles": [
+            "linkedin.com/company/6404208",
+            "linkedin.com/company/talentiq"
+          ],
+          "website": "talentiq.co"
+        },
+        "locations": [],
+        "end_date": null,
+        "start_date": "2015-03",
+        "title": {
+          "levels": [
+            "owner"
+          ],
+          "name": "co-founder",
+          "functions": [
+            "founder"
+          ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false,
+        "last_updated": null
+      },
+      {
+        "company": {
+          "name": "hallspot",
+          "size": "1-10",
+          "founded": "2013",
+          "industry": "computer software",
+          "location": {
+            "locality": "portland",
+            "region": "oregon",
+            "country": "united states"
+          },
+          "profiles": [
+            "linkedin.com/company/hallspot",
+            "linkedin.com/company/3019184"
+          ],
+          "website": "hallspot.com"
+        },
+        "locations": [],
+        "end_date": "2015-02",
+        "start_date": "2012-08",
+        "title": {
+          "levels": [
+            "owner"
+          ],
+          "name": "co-founder",
+          "functions": [
+            "founder"
+          ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false,
+        "last_updated": null
+      },
+      {
+        "company": {
+          "name": "datemyschool",
+          "size": "1-10",
+          "founded": "2011",
+          "industry": "internet",
+          "location": {
+            "locality": "brooklyn",
+            "region": "new york",
+            "country": "united states"
+          },
+          "profiles": [
+            "linkedin.com/company/1977175",
+            "linkedin.com/company/datemyschool"
+          ],
+          "website": "datemyschool.com"
+        },
+        "locations": [],
+        "end_date": "2012-08",
+        "start_date": "2012-01",
+        "title": {
+          "levels": [
+            "mgr"
+          ],
+          "name": "marketing manager",
+          "functions": [
+            "marketing manager"
+          ]
+        },
+        "type": null,
+        "is_primary": false,
+        "most_recent": false,
+        "last_updated": null
+      }
+    ],
+    "education": [
+      {
+        "school": {
+          "name": "university of oregon",
+          "type": "post-secondary institution",
+          "location": "eugene, oregon, united states",
+          "profiles": [
+            "linkedin.com/edu/university-of-oregon-19207",
+            "facebook.com/universityoforegon",
+            "twitter.com/uoregon"
+          ],
+          "website": "uoregon.edu"
+        },
+        "end_date": "2014",
+        "start_date": "2010",
+        "gpa": null,
+        "degrees": [],
+        "majors": [
+          "entrepreneurship"
+        ],
+        "minors": [],
+        "locations": []
+      }
+    ],
     "skills": [
       {
         "name": "social media"
@@ -361,9 +767,6 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "name": "fundraising"
       },
       {
-        "name": "strategic planning"
-      },
-      {
         "name": "seo"
       },
       {
@@ -379,16 +782,16 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "name": "entrepreneurship"
       },
       {
-        "name": "microsoft excel"
+        "name": "program management"
+      },
+      {
+        "name": "marketing"
       },
       {
         "name": "social networking"
       },
       {
         "name": "creative strategy"
-      },
-      {
-        "name": "training"
       },
       {
         "name": "time management"
@@ -401,6 +804,9 @@ Requests made with only a few data points, e.g. a name and location, will rarely
       },
       {
         "name": "css"
+      },
+      {
+        "name": "https"
       },
       {
         "name": "saas"
@@ -421,10 +827,16 @@ Requests made with only a few data points, e.g. a name and location, will rarely
         "name": "marketing communications"
       },
       {
+        "name": "sales/marketing and strategic partnerships"
+      },
+      {
         "name": "marketing strategy"
       },
       {
         "name": "mobile devices"
+      },
+      {
+        "name": "installation"
       },
       {
         "name": "company culture"
@@ -466,357 +878,6 @@ Requests made with only a few data points, e.g. a name and location, will rarely
       },
       {
         "name": "college campuses"
-      }
-    ],
-    "profiles": [
-      {
-        "network": "linkedin",
-        "ids": [
-          "145991517"
-        ],
-        "url": "http://www.linkedin.com/in/seanthorne",
-        "clean": "linkedin.com/in/seanthorne",
-        "aliases": [],
-        "username": "seanthorne"
-      },
-      {
-        "network": "klout",
-        "ids": [],
-        "url": "http://www.klout.com/seanthorne5",
-        "clean": "klout.com/seanthorne5",
-        "aliases": [],
-        "username": "seanthorne5"
-      },
-      {
-        "network": "twitter",
-        "ids": [],
-        "url": "http://www.twitter.com/seanthorne5",
-        "clean": "twitter.com/seanthorne5",
-        "aliases": [],
-        "username": "seanthorne5"
-      },
-      {
-        "network": "aboutme",
-        "ids": [],
-        "url": "http://www.about.me/sean_thorne",
-        "clean": "about.me/sean_thorne",
-        "aliases": [],
-        "username": "sean_thorne"
-      },
-      {
-        "network": "medium",
-        "ids": [],
-        "url": "http://www.medium.com/@seanthorne5",
-        "clean": "medium.com/@seanthorne5",
-        "aliases": [],
-        "username": "@seanthorne5"
-      },
-      {
-        "network": "angellist",
-        "ids": [],
-        "url": "http://www.angel.co/sean-thorne-1",
-        "clean": "angel.co/sean-thorne-1",
-        "aliases": [],
-        "username": "sean-thorne-1"
-      },
-      {
-        "network": "gravatar",
-        "ids": [],
-        "url": "http://www.gravatar.com/seanthorne5",
-        "clean": "gravatar.com/seanthorne5",
-        "aliases": [],
-        "username": "seanthorne5"
-      },
-      {
-        "network": "angellist",
-        "ids": [],
-        "url": "http://www.angel.co/475041",
-        "clean": "angel.co/475041",
-        "aliases": [],
-        "username": "475041"
-      }
-    ],
-    "emails": [
-      {
-        "address": "sean.thorne@talentiq.co",
-        "local": "sean.thorne",
-        "domain": "talentiq.co",
-        "type": "professional",
-        "sha256": "92e0b06495f24c1cb453b6d2a4d3374c3052fa9a87faf14ad8841ca7e92a586f"
-      },
-      {
-        "address": "sean@talentiq.co",
-        "local": "sean",
-        "domain": "talentiq.co",
-        "type": "professional",
-        "sha256": "312680c9c9dacac4307197777433e39f255ce7175c6085073aedc95c1e750bd6"
-      },
-      {
-        "address": "sean@hallspot.com",
-        "local": "sean",
-        "domain": "hallspot.com",
-        "type": "professional",
-        "sha256": "f61d233a1e3bf232f63c322a6d52ed692f69ec3a9585140302cd32a50027d704"
-      },
-      {
-        "address": "sthorne@uoregon.edu",
-        "local": "sthorne",
-        "domain": "uoregon.edu",
-        "type": null,
-        "sha256": "e206e6cd7fa5f9499fd6d2d943dcf7d9c1469bad351061483f5ce7181663b8d4"
-      },
-      {
-        "address": "sean@datemyschool.com",
-        "local": "sean",
-        "domain": "datemyschool.com",
-        "type": "professional",
-        "sha256": "ced7fdad56974dfbb8d9ccde17b5437e776ee3ca19c283b2ff940965dfb4f570"
-      }
-    ],
-    "phone_numbers": [
-      {
-        "area_code": "925",
-        "country_code": "1",
-        "E164": "+19252783011",
-        "national_number": "9252783011",
-        "number": "+19252783011"
-      },
-      {
-        "area_code": "415",
-        "country_code": "1",
-        "E164": "+14155688415",
-        "national_number": "4155688415",
-        "number": "+14155688415"
-      }
-    ],
-    "gender": "male",
-    "birth_date_fuzzy": "1990",
-    "birth_date": "1990-12-03",
-    "locations": [
-      {
-        "name": "eugene, oregon, united states",
-        "locality": "eugene",
-        "region": "oregon",
-        "subregion": "lane county",
-        "country": "united states",
-        "continent": "north america",
-        "type": "locality",
-        "geo": "44.05,-123.08",
-        "postal_code": "97401",
-        "zip_plus_4": null,
-        "street_address": "1400 mill st",
-        "address_line_2": null,
-        "most_recent": false,
-        "is_primary": false
-      },
-      {
-        "name": "san francisco, california, united states",
-        "locality": "san francisco",
-        "region": "california",
-        "subregion": "city and county of san francisco",
-        "country": "united states",
-        "continent": "north america",
-        "type": "locality",
-        "geo": "37.77,-122.41",
-        "postal_code": "94105",
-        "street_address": "399 fremont st",
-        "address_line_2": null,
-        "most_recent": true,
-        "is_primary": true,
-        "last_updated": 2018-10-07
-      }
-    ],
-    "names": [
-      {
-        "first_name": "sean",
-        "last_name": "thorne",
-        "middle_name": "fong",
-        "name": "sean fong thorne",
-        "clean": "sean thorne",
-        "is_primary": true
-      }
-    ],
-    "experience": [
-    {
-        "company": {
-            "name": "talentiq",
-            "size": null,
-            "industry": null,
-            "location": null,
-            "profiles": [],
-            "website": null
-        },
-        "locations": [],
-        "end_date": null,
-        "start_date": "2015-03",
-        "title": {
-            "levels": [
-                "owner"
-            ],
-            "name": "co-founder",
-            "functions": [
-                "founder"
-            ]
-        },
-        "type": null,
-        "is_primary": false,
-        "most_recent": false
-    },
-    {
-        "company": {
-            "name": "hallspot",
-            "size": "1-10",
-            "industry": "computer software",
-            "location": {
-                "country": "united states",
-                "region": "oregon",
-                "locality": "portland"
-            },
-            "profiles": [
-                "linkedin.com/company/3019184",
-                "linkedin.com/company/hallspot",
-                "twitter.com/hallspot",
-                "crunchbase.com/organization/hallspot"
-            ],
-            "website": "hallspot.com"
-        },
-        "locations": [],
-        "end_date": "2015-02",
-        "start_date": "2012-08",
-        "title": {
-            "levels": [
-                "owner"
-            ],
-            "name": "co-founder",
-            "functions": [
-                "founder"
-            ]
-        },
-        "type": null,
-        "is_primary": false,
-        "most_recent": false
-    },
-    {
-        "company": {
-            "name": "datemyschool",
-            "size": "11-50",
-            "industry": "internet",
-            "location": {
-                "country": "united states",
-                "region": "new york",
-                "locality": "brooklyn"
-            },
-            "profiles": [
-                "linkedin.com/company/datemyschool",
-                "linkedin.com/company/1977175",
-                "facebook.com/datemyschool",
-                "twitter.com/datemyschool",
-                "crunchbase.com/organization/datemyschool"
-            ],
-            "website": "datemyschool.com"
-        },
-        "locations": [],
-        "end_date": "2012-08",
-        "start_date": "2012-01",
-        "title": {
-            "levels": [
-                "mgr"
-            ],
-            "name": "marketing manager",
-            "functions": [
-                "marketing manager"
-            ]
-        },
-        "type": null,
-        "is_primary": false,
-        "most_recent": false
-    },
-    {
-        "company": {
-            "name": "people data labs",
-            "size": "11-50",
-            "industry": "computer software",
-            "location": {
-                "country": "united states",
-                "locality": "san francisco",
-                "region": "california"
-            },
-            "profiles": [
-                "linkedin.com/company/18170482",
-                "linkedin.com/company/peopledatalabs",
-                "twitter.com/peopledatalabs",
-                "facebook.com/peopledatalabs",
-                "crunchbase.com/organization/talentiq"
-            ],
-            "website": "peopledatalabs.com"
-        },
-        "locations": [],
-        "end_date": null,
-        "start_date": "2015-03",
-        "title": {
-            "levels": [
-                "owner",
-                "c"
-            ],
-            "name": "co-founder & ceo",
-            "functions": [
-                "founder",
-                "chief executive officer"
-            ]
-        },
-        "type": null,
-        "is_primary": true,
-        "most_recent": true,
-        "last_updated": "2018-10-03"
-    },
-    {
-        "company": {
-            "name": "talentiq technologies",
-            "size": null,
-            "industry": null,
-            "location": null,
-            "profiles": [],
-            "website": null
-        },
-        "start_date": null,
-        "end_date": null,
-        "title": {
-            "levels": [
-                "owner"
-            ],
-            "name": "co-founder",
-            "functions": [
-                "founder"
-            ]
-        },
-        "locations": [],
-        "type": null,
-        "is_primary": false,
-        "most_recent": false
-    }
-    ],
-    "education": [
-      {
-        "school": {
-          "name": "university of oregon",
-          "type": "post-secondary institution",
-          "location": "eugene, oregon, united states",
-          "profiles": [
-            "linkedin.com/edu/university-of-oregon-19207",
-            "facebook.com/universityoforegon"
-          ],
-          "website": "uoregon.edu"
-        },
-        "degrees": [],
-        "start_date": "2010",
-        "end_date": "2014",
-        "majors": [
-          "entrepreneurship"
-        ],
-        "minors": [],
-        "gpa": null,
-        "most_recent": true,
-        "is_primary": true
       }
     ]
   },

@@ -2,84 +2,119 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "additionalProperties": true,
   "properties": {
-    "primary": {
-      "job": {
-        "properties": {
-          "$ref": "includes/experience.json"
-        }
-      },
-      "location": {
-        "properties": {
-          "$ref": "includes/location.json"
-        }
-      },
-      "linkedin": {
-        "type": [
-          "string",
-          "null"
-        ]
-      },
-      "work_emails": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "personal_emails": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "other_emails": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "name": {
-        "properties": {
-          "first_name": {
-            "type": "string"
-          },
-          "middle_name": {
-            "type": "string"
-          },
-          "last_name": {
-            "type": "string"
-          },
-          "clean": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      }
-    },
     "birth_date": {
       "type": [
-        "string",
-        "null"
-      ],
-      "format": "full-date"
+        "null",
+        "string"
+      ]
     },
     "birth_date_fuzzy": {
       "type": [
-        "string",
-        "null"
-      ],
-      "format": "date-fullyear"
-    },
-    "gender": {
-      "type": "string",
-      "enum": [
-        "male",
-        "female",
-        null
+        "null",
+        "string"
       ]
     },
     "education": {
       "items": {
-        "$ref": "includes/education.json"
+        "additionalProperties": true,
+        "properties": {
+          "degrees": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "end_date": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "gpa": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "majors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "minors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "school": {
+            "oneOf": [
+              {
+                "additionalProperties": true,
+                "properties": {
+                  "location": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "profiles": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "type": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "website": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "location",
+                  "profiles",
+                  "website"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start_date": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "school",
+          "degrees",
+          "start_date",
+          "end_date",
+          "majors",
+          "minors",
+          "gpa"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
@@ -88,38 +123,34 @@
         "additionalProperties": true,
         "properties": {
           "address": {
-            "examples": [
-              "sean.thorne@peopledatalabs.com"
-            ],
             "type": "string"
           },
           "domain": {
-            "examples": [
-              "peopledatalabs.com"
-            ],
             "type": "string"
           },
           "local": {
-            "examples": [
-              "sean.thorne"
-            ],
+            "type": "string"
+          },
+          "sha256": {
             "type": "string"
           },
           "type": {
             "enum": [
-              "professional",
-              "personal",
               "current_professional",
-              null
+              null,
+              "personal",
+              "professional"
             ],
             "type": [
-              "string",
-              "null"
+              "null",
+              "string"
             ]
           }
         },
         "required": [
           "address",
+          "type",
+          "sha256",
           "domain",
           "local"
         ],
@@ -129,13 +160,602 @@
     },
     "experience": {
       "items": {
-        "$ref": "includes/experience.json"
+        "additionalProperties": true,
+        "properties": {
+          "company": {
+            "oneOf": [
+              {
+                "additionalProperties": true,
+                "properties": {
+                  "founded": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "industry": {
+                    "enum": [
+                      "civic & social organization",
+                      "military",
+                      "maritime",
+                      "primary/secondary education",
+                      "mechanical or industrial engineering",
+                      "architecture & planning",
+                      "sporting goods",
+                      "telecommunications",
+                      "oil & energy",
+                      "renewables & environment",
+                      "restaurants",
+                      "construction",
+                      "financial services",
+                      "cosmetics",
+                      "airlines/aviation",
+                      "performing arts",
+                      "textiles",
+                      "mental health care",
+                      "food production",
+                      "retail",
+                      "medical devices",
+                      "computer & network security",
+                      "luxury goods & jewelry",
+                      "executive office",
+                      "publishing",
+                      "insurance",
+                      "online media",
+                      "human resources",
+                      "alternative dispute resolution",
+                      "public safety",
+                      "glass, ceramics & concrete",
+                      "wine and spirits",
+                      "consumer services",
+                      "computer software",
+                      "semiconductors",
+                      "leisure, travel & tourism",
+                      "events services",
+                      "mining & metals",
+                      "real estate",
+                      "staffing and recruiting",
+                      "biotechnology",
+                      "venture capital & private equity",
+                      "paper & forest products",
+                      "printing",
+                      "philanthropy",
+                      null,
+                      "defense & space",
+                      "computer hardware",
+                      "chemicals",
+                      "media production",
+                      "sports",
+                      "industrial automation",
+                      "investment management",
+                      "logistics and supply chain",
+                      "arts and crafts",
+                      "investment banking",
+                      "automotive",
+                      "political organization",
+                      "photography",
+                      "education management",
+                      "alternative medicine",
+                      "commercial real estate",
+                      "environmental services",
+                      "higher education",
+                      "libraries",
+                      "writing and editing",
+                      "religious institutions",
+                      "transportation/trucking/railroad",
+                      "internet",
+                      "information technology and services",
+                      "e-learning",
+                      "computer games",
+                      "fishery",
+                      "legislative office",
+                      "computer networking",
+                      "broadcast media",
+                      "building materials",
+                      "hospitality",
+                      "packaging and containers",
+                      "import and export",
+                      "pharmaceuticals",
+                      "fine art",
+                      "public policy",
+                      "museums and institutions",
+                      "design",
+                      "wholesale",
+                      "veterinary",
+                      "think tanks",
+                      "hospital & health care",
+                      "tobacco",
+                      "graphic design",
+                      "individual & family services",
+                      "civil engineering",
+                      "food & beverages",
+                      "public relations and communications",
+                      "wireless",
+                      "utilities",
+                      "management consulting",
+                      "shipbuilding",
+                      "non-profit organization management",
+                      "farming",
+                      "nonprofit organization management",
+                      "program development",
+                      "facilities services",
+                      "law enforcement",
+                      "apparel & fashion",
+                      "electrical/electronic manufacturing",
+                      "consumer electronics",
+                      "music",
+                      "animation",
+                      "supermarkets",
+                      "nanotechnology",
+                      "law practice",
+                      "furniture",
+                      "capital markets",
+                      "newspapers",
+                      "business supplies and equipment",
+                      "international trade and development",
+                      "translation and localization",
+                      "motion pictures and film",
+                      "research",
+                      "security and investigations",
+                      "marketing and advertising",
+                      "legal services",
+                      "information services",
+                      "accounting",
+                      "gambling & casinos",
+                      "medical practice",
+                      "judiciary",
+                      "entertainment",
+                      "government administration",
+                      "international affairs",
+                      "railroad manufacture",
+                      "consumer goods",
+                      "health, wellness and fitness",
+                      "plastics",
+                      "aviation & aerospace",
+                      "dairy",
+                      "outsourcing/offshoring",
+                      "government relations",
+                      "banking",
+                      "professional training & coaching",
+                      "warehousing",
+                      "fund-raising",
+                      "package/freight delivery",
+                      "recreational facilities and services",
+                      "market research",
+                      "machinery",
+                      "ranching"
+                    ],
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "location": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": true,
+                        "properties": {
+                          "country": {
+                            "type": "string"
+                          },
+                          "locality": {
+                            "type": "string"
+                          },
+                          "region": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "locality",
+                          "region",
+                          "country"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "profiles": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "size": {
+                    "enum": [
+                      "5001-10000",
+                      null,
+                      "11-50",
+                      "51-200",
+                      "201-500",
+                      "1001-5000",
+                      "1-10",
+                      "10001+",
+                      "501-1000"
+                    ],
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "website": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "size",
+                  "founded",
+                  "industry",
+                  "location",
+                  "profiles",
+                  "website"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end_date": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "last_updated": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "locations": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "address_line_2": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "continent": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "geo": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "locality": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "postal_code": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "region": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "street_address": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "subregion": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "type": {
+                  "enum": [
+                    "subregion",
+                    "region",
+                    "country",
+                    "locality"
+                  ],
+                  "type": "string"
+                },
+                "zip_plus_4": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "locality",
+                "region",
+                "subregion",
+                "country",
+                "continent",
+                "type",
+                "geo",
+                "postal_code",
+                "zip_plus_4",
+                "street_address",
+                "address_line_2"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "most_recent": {
+            "type": "boolean"
+          },
+          "start_date": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "oneOf": [
+              {
+                "additionalProperties": true,
+                "properties": {
+                  "functions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "levels": {
+                    "items": {
+                      "enum": [
+                        "pres",
+                        "c",
+                        "vp",
+                        "mgr",
+                        "dir",
+                        "owner"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "levels",
+                  "name",
+                  "functions"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "company",
+          "start_date",
+          "end_date",
+          "title",
+          "locations",
+          "type",
+          "is_primary",
+          "most_recent",
+          "last_updated"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
+    "gender": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "id": {
+      "type": "string"
+    },
     "industries": {
       "items": {
-        "$ref": "includes/industry.json"
+        "additionalProperties": true,
+        "properties": {
+          "is_primary": {
+            "type": "boolean"
+          },
+          "name": {
+            "enum": [
+              "civic & social organization",
+              "military",
+              "maritime",
+              "primary/secondary education",
+              "mechanical or industrial engineering",
+              "architecture & planning",
+              "sporting goods",
+              "telecommunications",
+              "oil & energy",
+              "renewables & environment",
+              "restaurants",
+              "construction",
+              "financial services",
+              "cosmetics",
+              "airlines/aviation",
+              "performing arts",
+              "textiles",
+              "mental health care",
+              "food production",
+              "retail",
+              "medical devices",
+              "computer & network security",
+              "luxury goods & jewelry",
+              "executive office",
+              "publishing",
+              "insurance",
+              "online media",
+              "human resources",
+              "alternative dispute resolution",
+              "public safety",
+              "wine and spirits",
+              "consumer services",
+              "computer software",
+              "semiconductors",
+              "events services",
+              "mining & metals",
+              "real estate",
+              "staffing and recruiting",
+              "biotechnology",
+              "venture capital & private equity",
+              "paper & forest products",
+              "printing",
+              "philanthropy",
+              "defense & space",
+              "computer hardware",
+              "chemicals",
+              "media production",
+              "sports",
+              "industrial automation",
+              "investment management",
+              "logistics and supply chain",
+              "arts and crafts",
+              "investment banking",
+              "automotive",
+              "political organization",
+              "photography",
+              "education management",
+              "alternative medicine",
+              "commercial real estate",
+              "environmental services",
+              "higher education",
+              "libraries",
+              "writing and editing",
+              "religious institutions",
+              "transportation/trucking/railroad",
+              "internet",
+              "information technology and services",
+              "e-learning",
+              "computer games",
+              "fishery",
+              "legislative office",
+              "computer networking",
+              "broadcast media",
+              "building materials",
+              "hospitality",
+              "packaging and containers",
+              "import and export",
+              "pharmaceuticals",
+              "fine art",
+              "public policy",
+              "museums and institutions",
+              "design",
+              "wholesale",
+              "veterinary",
+              "think tanks",
+              "hospital & health care",
+              "tobacco",
+              "graphic design",
+              "individual & family services",
+              "civil engineering",
+              "food & beverages",
+              "public relations and communications",
+              "wireless",
+              "utilities",
+              "management consulting",
+              "shipbuilding",
+              "non-profit organization management",
+              "farming",
+              "program development",
+              "facilities services",
+              "law enforcement",
+              "apparel & fashion",
+              "electrical/electronic manufacturing",
+              "consumer electronics",
+              "music",
+              "animation",
+              "supermarkets",
+              "nanotechnology",
+              "law practice",
+              "furniture",
+              "capital markets",
+              "newspapers",
+              "business supplies and equipment",
+              "international trade and development",
+              "translation and localization",
+              "motion pictures and film",
+              "research",
+              "security and investigations",
+              "marketing and advertising",
+              "legal services",
+              "information services",
+              "accounting",
+              "gambling & casinos",
+              "medical practice",
+              "judiciary",
+              "entertainment",
+              "government administration",
+              "international affairs",
+              "railroad manufacture",
+              "consumer goods",
+              "plastics",
+              "aviation & aerospace",
+              "dairy",
+              "outsourcing/offshoring",
+              "government relations",
+              "banking",
+              "professional training & coaching",
+              "warehousing",
+              "fund-raising",
+              "package/freight delivery",
+              "recreational facilities and services",
+              "market research",
+              "machinery",
+              "ranching"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "is_primary"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
@@ -144,11 +764,6 @@
         "additionalProperties": true,
         "properties": {
           "name": {
-            "examples": [
-              "digital media",
-              "going on hikes",
-              "baseball"
-            ],
             "type": "string"
           }
         },
@@ -161,13 +776,157 @@
     },
     "locations": {
       "items": {
-        "$ref": "includes/location.json"
+        "additionalProperties": true,
+        "properties": {
+          "address_line_2": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "continent": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "geo": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "last_updated": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "locality": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "most_recent": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "postal_code": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "region": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "street_address": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subregion": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "type": {
+            "enum": [
+              "subregion",
+              "region",
+              "country",
+              "locality"
+            ],
+            "type": "string"
+          },
+          "zip_plus_4": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "locality",
+          "region",
+          "subregion",
+          "country",
+          "continent",
+          "type",
+          "geo",
+          "postal_code",
+          "zip_plus_4",
+          "street_address",
+          "address_line_2",
+          "most_recent",
+          "is_primary",
+          "last_updated"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
     "names": {
       "items": {
-        "$ref": "includes/person_name.json"
+        "additionalProperties": true,
+        "properties": {
+          "clean": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "middle_initial": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "middle_name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name",
+          "suffix",
+          "middle_name",
+          "middle_initial",
+          "name",
+          "clean",
+          "is_primary"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
@@ -176,51 +935,747 @@
         "additionalProperties": true,
         "properties": {
           "E164": {
-            "examples": [
-              "+14152756100"
-            ],
             "type": "string"
           },
+          "area_code": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "country_code": {
-            "examples": [
-              "1"
-            ],
             "type": "string"
           },
           "national_number": {
-            "examples": [
-              "4152756100"
-            ],
             "type": "string"
           },
           "number": {
-            "examples": [
-              "+14152756100"
-            ],
             "type": "string"
           },
           "type": {
-            "enum": [
-              "home",
-              "personal",
-              "professional",
-              "work",
-              null
-            ],
-            "type": "string"
+            "type": "null"
           }
         },
+        "required": [
+          "E164",
+          "number",
+          "type",
+          "country_code",
+          "national_number",
+          "area_code"
+        ],
         "type": "object"
       },
-      "required": [
-        "E164",
-        "number"
-      ],
       "type": "array"
+    },
+    "primary": {
+      "additionalProperties": true,
+      "properties": {
+        "industry": {
+          "enum": [
+            "civic & social organization",
+            "military",
+            "maritime",
+            "primary/secondary education",
+            "mechanical or industrial engineering",
+            "architecture & planning",
+            "sporting goods",
+            "telecommunications",
+            "oil & energy",
+            "renewables & environment",
+            "restaurants",
+            "construction",
+            "financial services",
+            "cosmetics",
+            "airlines/aviation",
+            "performing arts",
+            "textiles",
+            "mental health care",
+            "food production",
+            "retail",
+            "medical devices",
+            "computer & network security",
+            "luxury goods & jewelry",
+            "executive office",
+            "publishing",
+            "insurance",
+            "online media",
+            "human resources",
+            "alternative dispute resolution",
+            "public safety",
+            "wine and spirits",
+            "consumer services",
+            "computer software",
+            "semiconductors",
+            "events services",
+            "mining & metals",
+            "real estate",
+            "staffing and recruiting",
+            "biotechnology",
+            "venture capital & private equity",
+            "paper & forest products",
+            "printing",
+            "philanthropy",
+            null,
+            "defense & space",
+            "computer hardware",
+            "chemicals",
+            "media production",
+            "sports",
+            "industrial automation",
+            "investment management",
+            "logistics and supply chain",
+            "arts and crafts",
+            "investment banking",
+            "automotive",
+            "political organization",
+            "photography",
+            "education management",
+            "alternative medicine",
+            "commercial real estate",
+            "environmental services",
+            "higher education",
+            "libraries",
+            "writing and editing",
+            "religious institutions",
+            "transportation/trucking/railroad",
+            "internet",
+            "information technology and services",
+            "e-learning",
+            "computer games",
+            "fishery",
+            "legislative office",
+            "computer networking",
+            "broadcast media",
+            "building materials",
+            "hospitality",
+            "packaging and containers",
+            "import and export",
+            "pharmaceuticals",
+            "fine art",
+            "public policy",
+            "museums and institutions",
+            "design",
+            "wholesale",
+            "veterinary",
+            "think tanks",
+            "hospital & health care",
+            "tobacco",
+            "graphic design",
+            "individual & family services",
+            "civil engineering",
+            "food & beverages",
+            "public relations and communications",
+            "wireless",
+            "utilities",
+            "management consulting",
+            "shipbuilding",
+            "non-profit organization management",
+            "farming",
+            "program development",
+            "facilities services",
+            "law enforcement",
+            "apparel & fashion",
+            "electrical/electronic manufacturing",
+            "consumer electronics",
+            "music",
+            "animation",
+            "supermarkets",
+            "nanotechnology",
+            "law practice",
+            "furniture",
+            "capital markets",
+            "newspapers",
+            "business supplies and equipment",
+            "international trade and development",
+            "translation and localization",
+            "motion pictures and film",
+            "research",
+            "security and investigations",
+            "marketing and advertising",
+            "legal services",
+            "information services",
+            "accounting",
+            "gambling & casinos",
+            "medical practice",
+            "judiciary",
+            "entertainment",
+            "government administration",
+            "international affairs",
+            "railroad manufacture",
+            "consumer goods",
+            "plastics",
+            "aviation & aerospace",
+            "dairy",
+            "outsourcing/offshoring",
+            "government relations",
+            "banking",
+            "professional training & coaching",
+            "warehousing",
+            "fund-raising",
+            "package/freight delivery",
+            "recreational facilities and services",
+            "market research",
+            "machinery",
+            "ranching"
+          ],
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "job": {
+          "oneOf": [
+            {
+              "additionalProperties": true,
+              "properties": {
+                "company": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": true,
+                      "properties": {
+                        "founded": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "industry": {
+                          "enum": [
+                            "civic & social organization",
+                            "military",
+                            "maritime",
+                            "primary/secondary education",
+                            "mechanical or industrial engineering",
+                            "architecture & planning",
+                            "sporting goods",
+                            "telecommunications",
+                            "oil & energy",
+                            "renewables & environment",
+                            "restaurants",
+                            "construction",
+                            "financial services",
+                            "cosmetics",
+                            "airlines/aviation",
+                            "performing arts",
+                            "textiles",
+                            "mental health care",
+                            "food production",
+                            "retail",
+                            "medical devices",
+                            "computer & network security",
+                            "luxury goods & jewelry",
+                            "executive office",
+                            "publishing",
+                            "insurance",
+                            "online media",
+                            "human resources",
+                            "alternative dispute resolution",
+                            "public safety",
+                            "glass, ceramics & concrete",
+                            "wine and spirits",
+                            "consumer services",
+                            "computer software",
+                            "semiconductors",
+                            "leisure, travel & tourism",
+                            "events services",
+                            "mining & metals",
+                            "real estate",
+                            "staffing and recruiting",
+                            "biotechnology",
+                            "venture capital & private equity",
+                            "paper & forest products",
+                            "printing",
+                            "philanthropy",
+                            null,
+                            "defense & space",
+                            "computer hardware",
+                            "chemicals",
+                            "media production",
+                            "sports",
+                            "industrial automation",
+                            "investment management",
+                            "logistics and supply chain",
+                            "arts and crafts",
+                            "investment banking",
+                            "automotive",
+                            "political organization",
+                            "photography",
+                            "education management",
+                            "alternative medicine",
+                            "commercial real estate",
+                            "environmental services",
+                            "higher education",
+                            "libraries",
+                            "writing and editing",
+                            "religious institutions",
+                            "transportation/trucking/railroad",
+                            "internet",
+                            "information technology and services",
+                            "e-learning",
+                            "computer games",
+                            "fishery",
+                            "legislative office",
+                            "computer networking",
+                            "broadcast media",
+                            "building materials",
+                            "hospitality",
+                            "packaging and containers",
+                            "import and export",
+                            "pharmaceuticals",
+                            "fine art",
+                            "public policy",
+                            "museums and institutions",
+                            "design",
+                            "wholesale",
+                            "veterinary",
+                            "think tanks",
+                            "hospital & health care",
+                            "tobacco",
+                            "graphic design",
+                            "individual & family services",
+                            "civil engineering",
+                            "food & beverages",
+                            "public relations and communications",
+                            "wireless",
+                            "utilities",
+                            "management consulting",
+                            "shipbuilding",
+                            "non-profit organization management",
+                            "farming",
+                            "nonprofit organization management",
+                            "program development",
+                            "facilities services",
+                            "law enforcement",
+                            "apparel & fashion",
+                            "electrical/electronic manufacturing",
+                            "consumer electronics",
+                            "music",
+                            "animation",
+                            "supermarkets",
+                            "nanotechnology",
+                            "law practice",
+                            "furniture",
+                            "capital markets",
+                            "newspapers",
+                            "business supplies and equipment",
+                            "international trade and development",
+                            "translation and localization",
+                            "motion pictures and film",
+                            "research",
+                            "security and investigations",
+                            "marketing and advertising",
+                            "legal services",
+                            "information services",
+                            "accounting",
+                            "gambling & casinos",
+                            "medical practice",
+                            "judiciary",
+                            "entertainment",
+                            "government administration",
+                            "international affairs",
+                            "railroad manufacture",
+                            "consumer goods",
+                            "health, wellness and fitness",
+                            "plastics",
+                            "aviation & aerospace",
+                            "dairy",
+                            "outsourcing/offshoring",
+                            "government relations",
+                            "banking",
+                            "professional training & coaching",
+                            "warehousing",
+                            "fund-raising",
+                            "package/freight delivery",
+                            "recreational facilities and services",
+                            "market research",
+                            "machinery",
+                            "ranching"
+                          ],
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "location": {
+                          "oneOf": [
+                            {
+                              "additionalProperties": true,
+                              "properties": {
+                                "country": {
+                                  "type": "string"
+                                },
+                                "locality": {
+                                  "type": "string"
+                                },
+                                "region": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "locality",
+                                "region",
+                                "country"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "name": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "profiles": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "size": {
+                          "enum": [
+                            "5001-10000",
+                            null,
+                            "11-50",
+                            "51-200",
+                            "201-500",
+                            "1001-5000",
+                            "1-10",
+                            "10001+",
+                            "501-1000"
+                          ],
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "website": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "founded",
+                        "industry",
+                        "location",
+                        "profiles",
+                        "website",
+                        "size"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "end_date": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "last_updated": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "locations": {
+                  "items": {
+                    "additionalProperties": true,
+                    "properties": {
+                      "country": {
+                        "type": "string"
+                      },
+                      "locality": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "region": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "locality",
+                      "region",
+                      "country"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "start_date": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "title": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": true,
+                      "properties": {
+                        "functions": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "levels": {
+                          "items": {
+                            "enum": [
+                              "pres",
+                              "c",
+                              "vp",
+                              "mgr",
+                              "dir",
+                              "owner"
+                            ],
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "levels",
+                        "name",
+                        "functions"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "company",
+                "start_date",
+                "end_date",
+                "title",
+                "locations",
+                "last_updated"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "linkedin": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "location": {
+          "oneOf": [
+            {
+              "additionalProperties": true,
+              "properties": {
+                "continent": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "last_updated": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "locality": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "region": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "locality",
+                "region",
+                "country",
+                "last_updated",
+                "continent"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "additionalProperties": true,
+          "properties": {
+            "clean": {
+              "type": "string"
+            },
+            "first_name": {
+              "type": "string"
+            },
+            "last_name": {
+              "type": "string"
+            },
+            "middle_name": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "first_name",
+            "middle_name",
+            "last_name",
+            "clean"
+          ],
+          "type": "object"
+        },
+        "other_emails": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "personal_emails": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "work_emails": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "job",
+        "location",
+        "name",
+        "industry",
+        "personal_emails",
+        "linkedin",
+        "work_emails",
+        "other_emails"
+      ],
+      "type": "object"
     },
     "profiles": {
       "items": {
-        "$ref": "includes/profile.json"
+        "additionalProperties": true,
+        "properties": {
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "clean": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "network": {
+            "enum": [
+              "angellist",
+              "behance",
+              "gitlab",
+              "xing",
+              "klout",
+              "google",
+              "linkedin",
+              "aboutme",
+              "dribbble",
+              "quora",
+              "instagram",
+              "pinterest",
+              "meetup",
+              "gravatar",
+              "medium",
+              "soundcloud",
+              "foursquare",
+              "indeed",
+              "youtube",
+              "myspace",
+              "github",
+              "facebook",
+              "flickr",
+              "vimeo",
+              "reddit",
+              "crunchbase",
+              "twitter",
+              "wordpress"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "username": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "network",
+          "ids",
+          "clean",
+          "aliases",
+          "username",
+          "url"
+        ],
+        "type": "object"
       },
       "type": "array"
     },
@@ -229,11 +1684,6 @@
         "additionalProperties": true,
         "properties": {
           "name": {
-            "examples": [
-              "nonprofits",
-              "python",
-              "data science"
-            ],
             "type": "string"
           }
         },
@@ -245,5 +1695,21 @@
       "type": "array"
     }
   },
-  "type": "object"
+  "required": [
+    "id",
+    "skills",
+    "industries",
+    "interests",
+    "profiles",
+    "emails",
+    "phone_numbers",
+    "birth_date_fuzzy",
+    "birth_date",
+    "gender",
+    "primary",
+    "names",
+    "locations",
+    "experience",
+    "education"
+  ]
 }
