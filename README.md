@@ -1,45 +1,45 @@
 # REST API v4
- 
 
-### Overview 
 
-This document describes the People Data Labs v4 REST API. Canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/peopledatalabs/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/peopledatalabs/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/peopledatalabs/docs/tree/master/schemas). 
+### Overview
 
-If you have any problems or requests, please contact your account manager, or email us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a> 
+This document describes the People Data Labs v4 REST API. Canonical datasets used to supplement the person dataset can be found in the [data directory](https://github.com/peopledatalabs/docs/tree/master/data). Example profiles and API responses can be found in the [examples directory](https://github.com/peopledatalabs/docs/tree/master/examples), and their corresponding schemas can be found in the [schemas directory](https://github.com/peopledatalabs/docs/tree/master/schemas).
 
-1. [Overview](#overview) 
-1. [Introduction](#introduction) 
-1. [Endpoint](#endpoint) 
-1. [Versioning](#versioning) 
-1. [Authentication](#authentication) 
-1. [Rate Limiting](#rate-limiting) 
-1. [Requests](#requests) 
-1. [Parameters](#parameters) 
-1. [Required Parameter](#required-parameter) 
-1. [Likelihood](#likelihood) 
-1. [Response](#response) 
+If you have any problems or requests, please contact your account manager, or email us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a>
+
+1. [Overview](#overview)
+1. [Introduction](#introduction)
+1. [Endpoint](#endpoint)
+1. [Versioning](#versioning)
+1. [Authentication](#authentication)
+1. [Rate Limiting](#rate-limiting)
+1. [Requests](#requests)
+1. [Parameters](#parameters)
+1. [Required Parameter](#required-parameter)
+1. [Likelihood](#likelihood)
+1. [Response](#response)
 1. [Errors](#errors)
-1. [Bulk Endpoint](#bulk-endpoint) 
+1. [Bulk Endpoint](#bulk-endpoint)
 
 
 ### Introduction  
 
-The API is designed to enrich information on a single person. 
+The API is designed to enrich information on a single person.
 
-The API is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) and uses HTTP response codes to indicate API errors. All API responses, including errors, are returned in [JSON](http://www.json.org). 
+The API is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) and uses HTTP response codes to indicate API errors. All API responses, including errors, are returned in [JSON](http://www.json.org).
 
 
 ### Endpoint  
 
 The API resides at `api.peopledatalabs.com`. All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS). Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
-```curl 
+```curl
 https://api.peopledatalabs.com
 ```
 
 The `v4` API can be used to enrich data on a person:
 
-```curl 
+```curl
 curl -X GET \
   'https://api.peopledatalabs.com/v4/person?profile=linkedin.com/in/seanthorne'
 ```
@@ -57,57 +57,57 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
     	}
     ]
 }'
-``` 
+```
 
-For high volume usage, we recommend the 2nd option. 
+For high volume usage, we recommend the 2nd option.
 
-### Versioning 
+### Versioning
 
-API versions are specified in the url. Older versions of the API will continue to be supported. 
- 
+API versions are specified in the url. Older versions of the API will continue to be supported.
+
 When we make backwards-incompatible changes to the API or dataset, we'll create a new version. The most up to date version of the API is `v4`. The next version of the API will be `v5`. We perform batch data builds on a monthly basis. We don't perform any streaming updates to the dataset between data builds. Each version of the API will use the most recent, up-to-date data build.  
 
 As can be seen in the [Example Person Data Model](https://github.com/peopledatalabs/docs/blob/master/examples/person.json), all data fields are stored as a list of objects. Data builds are ran approximately every 2 months. After a data build is ran, barring any significant update that breaks existing functionality in the API, the newly built data will be returned in existing versions of the API. Therefore, the dataset is not completely static; the number of fields/data points a specific profile has may increase/decrease through time.    
 
 In a single API version, the number of canonical values for `phone_numbers.type`, `locations.type`, `emails.type`, `profiles.network`, `industries.name`, and `locations` may increase, but the original values will not change. For example, in `v4`, a github profile in the `profiles` field's `network` field will always have the value `github`, yet if a social network which is not currently in the dataset, e.g. `yelp.com` is added, `yelp` would be added as a potential to the [list of canonical social network types](https://github.com/peopledatalabs/docs/blob/master/data/profiles_network.json). The most up-to-date list of canonical values for these fields can always be found in [github.com/peopledatalabs/docs/tree/master/data](https://github.com/peopledatalabs/docs/tree/master/data)    
 
-On the other hand, the canonical `education.school` data, and the canonical `experience.company` data may change slightly within the span of a single API version. 
+On the other hand, the canonical `education.school` data, and the canonical `experience.company` data may change slightly within the span of a single API version.
 
 
 
-### Authentication 
+### Authentication
 
 There are two ways to authenticate requests to `v4`.  
 
-**In URL** 
+**In URL**
 
 ```curl  
 curl -X GET \
   'https://api.peopledatalabs.com/v4/person?api_key=xxxx'
-``` 
+```
 
-**In Header** 
+**In Header**
 
 ```curl  
 curl -X GET \
-  'https://api.peopledatalabs.com/v4/person' \ 
+  'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx'
-``` 
+```
 
 Requests made with an invalid API Key will return a `401` error. If you need any assistance here, would like to request a new API key, or delete your existing key, please contact your account manager or reach out to us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a>
 
 
 ### Rate Limiting
 
-Rate limits are defined on a per-minute basis. We use a fixed-window rate limiting strategy, so if your API key's rate limit is `5000` requests per minute, those `5000` api calls can be made at any interval within the 60 second window. 
+Rate limits are defined on a per-minute basis. We use a fixed-window rate limiting strategy, so if your API key's rate limit is `5000` requests per minute, those `5000` api calls can be made at any interval within the 60 second window.
 
 
-```curl 
+```curl
 curl -i -X GET \
   'https://api.peopledatalabs.com/v4/person' \
   -H 'X-Api-Key: xxxx'
-  
-HTTP/2 404 
+
+HTTP/2 404
 date: Tue, 16 Jan 2018 17:38:18 GMT
 content-type: application/json
 content-length: 4731
@@ -121,32 +121,32 @@ retry-after: 59
 ```  
 
 
-| Header Name | Description | 
-|-----------|---------| 
+| Header Name | Description |
+|-----------|---------|
 | `x-totallimit-limit` | The maximum number of API requests which return a `200` you're able to make. |
 | `x-totallimit-remaining` | The number of API requests which return a `200` you have remaining |
-| `x-ratelimit-limit` | The maximum number of requests you're permitted to make per minute. | 
+| `x-ratelimit-limit` | The maximum number of requests you're permitted to make per minute. |
 | `x-ratelimit-remaining` | The number of requests remaining in the current rate limit window. |
 | `x-ratelimit-reset` |     The time at which the current rate limit window resets in UTC epoch seconds. |
 | `retry-after` | The number of seconds left until the current rate limit window resets. |
 
 If your account has a limit on the number of `200` API calls you're able to make, once `x-totallimit-remaining` reaches 0, all succeeding api requests will return `403` errors, and once `x-ratelimit-remaining` reaches 0, all succeeding requests made will return `429` errors, until the current rate limit window resets. If you'd like to increase your account's `x-totallimit-limit` or `x-ratelimit-limit`, please contact your account manager or reach out to us at <a href="mailto:support@peopledatalabs.com">support@peopledatalabs.com</a>
 
- 
-### Requests 
 
-When a matching person is returned, the HTTP Response code will be `200`, and when no matching person is found or returned, the HTTP Response code will be a `404`. 
+### Requests
 
-When an API request is executed, the queried data points are preprocessed and built into a query, which is then executed against our production dataset. If the query yields 1 or more matching persons from the dataset, the person returned in the API response is the one who is most likely to be the same person as the person requested. This degree of confidence is represented by the `likelihood` field in the API response. The `likelihood` field is an integer between `0` and `10` that represents how confident we are the person returned is the same as the person requested. The minimum likelihood score a response must possess in order to return a `200` can be controlled in the api request using the `min_likelihood` param, [described in the parameters section below](#parameters). 
+When a matching person is returned, the HTTP Response code will be `200`, and when no matching person is found or returned, the HTTP Response code will be a `404`.
 
-Query parameters should be separated by an ampersand `&`. 
+When an API request is executed, the queried data points are preprocessed and built into a query, which is then executed against our production dataset. If the query yields 1 or more matching persons from the dataset, the person returned in the API response is the one who is most likely to be the same person as the person requested. This degree of confidence is represented by the `likelihood` field in the API response. The `likelihood` field is an integer between `0` and `10` that represents how confident we are the person returned is the same as the person requested. The minimum likelihood score a response must possess in order to return a `200` can be controlled in the api request using the `min_likelihood` param, [described in the parameters section below](#parameters).
+
+Query parameters should be separated by an ampersand `&`.
 
 ```curl
-GET /v4/person?api_key=xxxx&min_likelihood=6&required=emails AND experience&profile=http://linkedin.com/in/seanthorne 
+GET /v4/person?api_key=xxxx&min_likelihood=6&required=emails AND experience&profile=http://linkedin.com/in/seanthorne
 ```
 
-```curl 
-GET /v4/person?api_key=xxxx&company=People Data Labs&company=Hallspot&email=sean.thorne@talentiq.co 
+```curl
+GET /v4/person?api_key=xxxx&company=People Data Labs&company=Hallspot&email=sean.thorne@talentiq.co
 ```
 
 ### Parameters  
@@ -155,14 +155,14 @@ Data points on the queried person are added as key/value pairs to the query stri
 
 A number of key/values can also be added to the query string of a `v4` request to control the data points a response must contain to be returned as a `200`, and also to control certain parts of the API response schema.  
 
-All query parameters listed below are optional. 
+All query parameters listed below are optional.
 
-**Data Parameters** 
+**Data Parameters**
 
 The following parameters can be used to specify information on the requested person. Adding more data points to a request increases the probability of a `200` response, and further, will increase the accuracy of the response's likelihood score.
 
 | Parameter Name | Description | Example |
-|-----------|---------|---------| 
+|-----------|---------|---------|
 | `name` | The person's full name, at least first and last. | `Jennifer C. Jackson` |
 | `first_name` | The person's first name | `Jennifer` |
 | `last_name` | The person's last name | `Jackson` |
@@ -179,73 +179,73 @@ The following parameters can be used to specify information on the requested per
 
 The minimum combination of data points a request must contain in order to have a possibility of returning a `200` response are:  
 
-```curl 
-profile OR email OR phone OR ( 
+```curl
+profile OR email OR phone OR (
     (
-        (first_name AND last_name) OR name) AND 
+        (first_name AND last_name) OR name) AND
         (locality OR region OR company OR school OR location)
     )
 ```
 
 
-**Examples** 
+**Examples**
 
 
-```curl 
+```curl
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
-  -H 'X-Api-Key: xxxx' \ 
+  -H 'X-Api-Key: xxxx' \
   --data-urlencode 'email=sean@talentiq.co' \
-  --data-urlencode 'email=sean@peopledatalabs.com' \ 
+  --data-urlencode 'email=sean@peopledatalabs.com' \
   --data-urlencode 'name=Sean Thorne'
 
-``` 
+```
 
-```curl 
+```curl
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
-  -H 'X-Api-Key: xxxx' \ 
+  -H 'X-Api-Key: xxxx' \
   --data-urlencode 'company=TalentIQ Technologies' \
-  --data-urlencode 'first_name=Sean' \ 
+  --data-urlencode 'first_name=Sean' \
   --data-urlencode 'last_name=Thorne' \
-  --data-urlencode 'school=University of Oregon' 
+  --data-urlencode 'school=University of Oregon'
 
 ```
 
-```curl 
+```curl
 curl -X GET -G \
   'https://api.peopledatalabs.com/v4/person' \
-  -H 'X-Api-Key: xxxx' \ 
-  --data-urlencode 'name=Sean Thorne' \ 
+  -H 'X-Api-Key: xxxx' \
+  --data-urlencode 'name=Sean Thorne' \
   --data-urlencode 'location=SF Bay Area' \
   --data-urlencode 'profile=www.twitter.com/seanthorne5' \
-  --data-urlencode 'phone=1 503-2353497' 
+  --data-urlencode 'phone=1 503-2353497'
 
 ```
 
 
-**Response Filtering Parameters** 
+**Response Filtering Parameters**
 
-These parameters can be used to describe the characteristics an API response must posess to return a `200`. 
+These parameters can be used to describe the characteristics an API response must posess to return a `200`.
 
 | Parameter Name | Description | Default |
-|-----------|---------|---------| 
+|-----------|---------|---------|
 | `min_likelihood` | The minimum `likelihood` score a response must have to return a `200` | `0` |
 | `required` | Parameter specifying the fields and data points a response must have to return a `200` | |
 
-For more information on the `min_likelihood` param, see the [likelihood](#likelihood) section, and for more information on the `required param`, see the [required param](#required-parameter) section. 
+For more information on the `min_likelihood` param, see the [likelihood](#likelihood) section, and for more information on the `required param`, see the [required param](#required-parameter) section.
 
 
-**Response Formatting Parameters** 
+**Response Formatting Parameters**
 
-The following parameter can be used to control/specify certain things about the formatting of the person data in the API response. 
+The following parameter can be used to control/specify certain things about the formatting of the person data in the API response.
 
 | Parameter Name | Description | Default |
-|-----------|---------|---------| 
+|-----------|---------|---------|
 | `titlecase` | All text in the data of API responses is returned as lowercase by default. Setting `titlecase` to `true` will titlecase the person data in `200` responses | `false` |  
 
- 
- 
+
+
 ### Required Parameter  
 
 
@@ -253,33 +253,33 @@ The required parameter ensures that you only get charged for responses which hav
 
 Response must contain an email
 
-```curl 
+```curl
 required=emails
 ```
- 
-Response must contain a linkedin url 
 
-```curl 
-required=profiles.network:linkedin 
-``` 
+Response must contain a linkedin url
+
+```curl
+required=profiles.network:linkedin
+```
 
 Response must contain experience and emails
 
-```curl 
+```curl
 required=experience AND emails  
-``` 
+```
 
 Response must contain experience or emails
 
-```curl 
+```curl
 required=experience OR emails  
-``` 
+```
 
 Response must contain education and (emails or phone_numbers)
 
-```curl 
+```curl
 required=education AND (emails OR phone_numbers)
-``` 
+```
 
 Fields which can be filtered/required are limited to:  
 
@@ -302,11 +302,11 @@ Fields which can be filtered/required are limited to:
 * `profiles.ids`
 * `profiles.network`
 
-### Likelihood 
+### Likelihood
 
-The likelihood score gives you the ability to control match precision vs. recall. Increasing the `min_likelihood` score will result in lower match rates, yet less false positive `200` responses. For use cases which rely on a high degree of data accuracy, only records with a likelihood of approximately `8` or above should be used. By default, match recall is kept very high, so a response which returns a likelihood score of `2` will roughly have just a 10 to 30 percent chance of being the same person as the one requested. Adding more data points to your requests will increase the probability of a `200` response returning a higher likelihood score. 
+The likelihood score gives you the ability to control match precision vs. recall. Increasing the `min_likelihood` score will result in lower match rates, yet less false positive `200` responses. For use cases which rely on a high degree of data accuracy, only records with a likelihood of approximately `8` or above should be used. By default, match recall is kept very high, so a response which returns a likelihood score of `2` will roughly have just a 10 to 30 percent chance of being the same person as the one requested. Adding more data points to your requests will increase the probability of a `200` response returning a higher likelihood score.
 
-Requests made with only a few data points, e.g. a name and location, will rarely return a `200` response with a likelihood score > 5, and requests made with just an email will rarely return a `200` response with a likelihood score > 7. 
+Requests made with only a few data points, e.g. a name and location, will rarely return a `200` response with a likelihood score > 5, and requests made with just an email will rarely return a `200` response with a likelihood score > 7.
 
 
 ### Response
@@ -315,15 +315,15 @@ Requests made with only a few data points, e.g. a name and location, will rarely
 **200 Response Fields**  
 
 | Field Name | Type | Description |
-|-----------|---------|---------| 
+|-----------|---------|---------|
 | `data` | object | The person response object |  
 | `status` | integer | HTTP Status Code |  
 | `likelihood` | integer | Likelihood Score |  
- 
- 
+
+
 **Example 200 Response**  
 
-```json 
+```json
 {
   "status": 200,
   "metadata": {
@@ -884,53 +884,53 @@ Requests made with only a few data points, e.g. a name and location, will rarely
   "likelihood": 10
 }
 ```
- 
 
 
 
- 
-### Errors 
 
-The API uses conventional HTTP response codes to indicate the success or failure of an API request. A `200` means there was a matching person returned, a `404` means that a matching person was not found or returned, any `4xx` besides `404` indicates an issue with the request, and `5xx` errors indicate an internal issue with the API. 
+
+### Errors
+
+The API uses conventional HTTP response codes to indicate the success or failure of an API request. A `200` means there was a matching person returned, a `404` means that a matching person was not found or returned, any `4xx` besides `404` indicates an issue with the request, and `5xx` errors indicate an internal issue with the API.
 
 
 **4xx Response Fields**  
 
 | Field Name | Type | Description |
-|-----------|---------|---------| 
+|-----------|---------|---------|
 | `error` | object | Object containing the error type message |  
 | `status` | integer | HTTP Status Code |  
 
 
-**Example 404 Response** 
+**Example 404 Response**
 
-```json 
+```json
 {
     "status": 404,
     "error": {
         "type": "not_found",
         "message": "No records were found matching your request"
     }
-} 
+}
 ```
 
-**Example 429 Response** 
+**Example 429 Response**
 
-```json 
+```json
 {
     "status": 429,
     "error": {
         "type": "rate_limit_error",
         "message": "An error occurred due to requests hitting the API too quick"
     }
-} 
+}
 ```
 
-**Error codes** 
+**Error codes**
 
 | Status | Error Name | Description |
 |--------|-----------|---------|
-| `400` | `invalid_request_error` | Request contained either missing or invalid parameters | 
+| `400` | `invalid_request_error` | Request contained either missing or invalid parameters |
 | `401` | `authentication_error` | Request contained a missing or invalid key |  
 | `403` | `quota_exceeded ` | Your account has reached its quota for successful API calls |  
 | `404` | `not_found ` | No records were found matching your request |  
@@ -940,7 +940,7 @@ The API uses conventional HTTP response codes to indicate the success or failure
 
 
 
-### Bulk Endpoint 
+### Bulk Endpoint
 
 Up to 100 persons can be enriched in a single HTTP request using the `/v4/person/bulk` endpoint. Enrichments executed against the bulk endpoint must be a `POST`. The request body of a bulk enrichment request must contain an array, `requests`, with 1-100 individual request objects, each containing an object `params` of request parameters. A JSON schema describing the structure of a `/v4/person/bulk` enrichment request can be found at [https://github.com/peopledatalabs/docs/blob/master/schemas/bulk_request.json](https://github.com/peopledatalabs/docs/blob/master/schemas/bulk_request.json)
 
@@ -964,7 +964,7 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
     	}
     ]
 }'
-``` 
+```
 
 Responses are returned as an array of [response](#response) objects.  
 
@@ -975,7 +975,7 @@ Responses are returned as an array of [response](#response) objects.
 ]
 ```
 
-Response objects are not always returned in the same order as they were defined in the `requests` array. For this reason, we strongly recommend adding an object `metadata` to each request, containing any information specific to that request. If `metadata` is defined in a request object, it will be returned, unchanged in that request's corresponding response object: 
+Response objects are not always returned in the same order as they were defined in the `requests` array. For this reason, we strongly recommend adding an object `metadata` to each request, containing any information specific to that request. If `metadata` is defined in a request object, it will be returned, unchanged in that request's corresponding response object:
 
 ```curl
 curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
@@ -1003,7 +1003,7 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
     	}
     ]
 }'
-``` 
+```
 
 ```json
 [
@@ -1012,7 +1012,7 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
 ]
 ```
 
-Any of the response filtering or formatting params documented in the [Parameters](#parameters) section can be defined globally for all request objects: 
+Any of the response filtering or formatting params documented in the [Parameters](#parameters) section can be defined globally for all request objects:
 
 ```curl
 curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
@@ -1035,8 +1035,8 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
     	}
     ]
 }'
-``` 
-Or locally in a single request object: 
+```
+Or locally in a single request object:
 
 ```curl
 curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: application/json' -d'
@@ -1081,20 +1081,12 @@ curl -X POST "https://api.peopledatalabs.com/v4/person/bulk" -H 'Content-Type: a
 }'
 ```  
 
-```json 
+```json
 {
     "status": 400,
     "error": {
         "type": "invalid_request_error",
         "message": "Request object must contain `requests` field"
     }
-} 
+}
 ```
-
-
-
-
-
-
-
-
